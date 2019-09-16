@@ -1,1 +1,44 @@
-<p>login-signup works!</p>
+<div class="main-div">
+  <form (ngSubmit)="LogIn(f)" #f="ngForm">
+    <mat-card style="text-align: center; padding: 32px;">
+      <img
+        class="center"
+        mat-card-image
+        src="http://news.nwu.ac.za/sites/news.nwu.ac.za/files/Logo-press-releases_68.png"
+        alt="app logo">
+      <mat-card-content>
+        <h4>Welcome to the Hostel Management Application.</h4>
+        <h4>{{ signInMessage }}</h4>
+        <mat-form-field>
+          <input
+            matInput
+            id="usernameInput"
+            class="form-control"
+            placeholder="Student Number"
+            name="username"
+            ngModel
+            required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input
+            matInput
+            id="passwordInput"
+            class="form-control"
+            placeholder="Password"
+            type="password"
+            name="password"
+            ngModel
+            required>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          type="submit"
+          style="color: white;"
+          mat-raised-button color="primary">Log In
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

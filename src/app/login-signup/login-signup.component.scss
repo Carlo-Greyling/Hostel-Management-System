@@ -1,0 +1,28 @@
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://s3-external-1.amazonaws.com/youvisit-img/Assets/img/locations/80088/1280_profile.jpg?v=1527208493") no-repeat;
+  background-size: 100% 100%;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+mat-form-field {
+  width: 100%;
+}
+button {
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  position: absolute;
+  z-index: -10;
+}
