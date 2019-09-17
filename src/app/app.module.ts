@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    QRCodeGeneratorComponent
   ],
   imports: [
     BrowserModule,
