@@ -7,6 +7,7 @@ import { LoginSignupComponent } from './login-signup/login-signup.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxQRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
