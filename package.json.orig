@@ -25,8 +25,11 @@
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
     "bootstrap": "^4.3.1",
-    "ngx-avatar": "^3.7.0",
+<<<<<<< HEAD
     "ngx-qrcode2": "0.0.9",
+=======
+    "ngx-avatar": "^3.7.0",
+>>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

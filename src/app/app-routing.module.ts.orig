@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
+<<<<<<< HEAD
+import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+=======
 import {HcHomeComponent} from './hc-home/hc-home.component';
 import {CalenderComponent} from './calender/calender.component';
 import {AttendanceComponent} from './attendance/attendance.component';
-import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+>>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginSignupComponent },
+<<<<<<< HEAD
+  { path: 'qr-code', component: QRCodeGeneratorComponent }
+=======
   { path: 'hc-home', component: HcHomeComponent, children: [
       { path: 'calender', component: CalenderComponent },
       { path: 'attendance', component: AttendanceComponent }
-    ]},
-  { path: 'qr-code', component: QRCodeGeneratorComponent }
+    ]}
+>>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
 ];
 
 @NgModule({

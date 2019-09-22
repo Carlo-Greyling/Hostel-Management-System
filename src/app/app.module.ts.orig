@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+<<<<<<< HEAD
+import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+=======
 import {HcHomeComponent} from './hc-home/hc-home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -18,17 +22,19 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
+>>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginSignupComponent,
+<<<<<<< HEAD
+    QRCodeGeneratorComponent
+=======
     HcHomeComponent,
     CalenderComponent,
-    AttendanceComponent,
-    QRCodeGeneratorComponent
+    AttendanceComponent
+>>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
   ],
   imports: [
     BrowserModule,
@@ -39,6 +45,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
+    NgxQRCodeModule
+=======
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
@@ -47,8 +56,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     AvatarModule,
     FullCalendarModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    NgxQRCodeModule
+    MatNativeDateModule
+>>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]

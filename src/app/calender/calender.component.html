@@ -1,0 +1,35 @@
+<div style="padding: 16px">
+  <div style="width: 50%; float: left; padding: 8px;">
+    <full-calendar id="calendar"
+                   defaultView="dayGridMonth"
+                   [plugins]="calendarPlugins"
+                   [events]="events"
+    ></full-calendar>
+  </div>
+  <div style="float: left; padding: 8px;">
+    <h4 style="padding-top: 16px;">Selected Event Details:</h4>
+    <mat-form-field>
+      <input matInput disabled placeholder="Title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput disabled placeholder="Date">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput disabled placeholder="Description"></textarea>
+    </mat-form-field>
+    <br>
+    <h4 style="padding-top: 16px;">Add Event:</h4>
+    <mat-form-field>
+      <input matInput placeholder="Title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" style="width: 100%;">Add Event to Calendar</button>
+  </div>
+</div>

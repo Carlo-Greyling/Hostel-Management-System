@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-signup',
@@ -9,7 +10,7 @@ import {NgForm} from '@angular/forms';
 export class LoginSignupComponent implements OnInit {
   signInMessage = 'Please Log In'
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -18,7 +19,7 @@ export class LoginSignupComponent implements OnInit {
     const value = form.value;
     if (value.username === 'admin') {
       if (value.password === 'admin') {
-        // this.router.navigate(['homeComponent']);
+        this.router.navigate(['hc-home']);
       }
     }
   }
