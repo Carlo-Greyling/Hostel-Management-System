@@ -12,9 +12,12 @@ import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {HttpClientModule} from '@angular/common/http';
-import {AvatarModule} from "ngx-avatar";
+import {AvatarModule} from 'ngx-avatar';
 import { CalenderComponent } from './calender/calender.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -38,9 +41,12 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
-    AvatarModule
+    AvatarModule,
+    FullCalendarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {
