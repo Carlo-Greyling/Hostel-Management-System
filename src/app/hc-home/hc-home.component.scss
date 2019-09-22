@@ -1,0 +1,57 @@
+.my-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .my-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.digiag {
+  margin-left: 8px;
+  color: white;
+}
+
+h4.digiag {
+  /*margin-left: 8px;*/
+  padding-left: 20px;
+}
+
+.home-sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .home-sidenav-container {
+  flex: 1 0 auto;
+}
+
+.white-icon {
+  color: white;
+}
+
+.white-icon svg {
+  fill: white;
+}
+
+.sidenav-card {
+  padding-top: 0px;
+}
+
+mat-sidenav {
+  min-width: 15%;
+}
+
+mat-sidenav-content {
+  /*margin-left: 8px;*/
+}
+
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
