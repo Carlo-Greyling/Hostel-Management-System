@@ -1,25 +1,27 @@
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-import {FormsModule} from '@angular/forms';
-import {HcHomeComponent} from './hc-home/hc-home.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {HttpClientModule} from '@angular/common/http';
-import {AvatarModule} from 'ngx-avatar';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { HcHomeComponent } from './hc-home/hc-home.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { AvatarModule } from 'ngx-avatar';
 import { CalenderComponent } from './calender/calender.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     HcHomeComponent,
     CalenderComponent,
     AttendanceComponent,
-    QRCodeGeneratorComponent
+    QRCodeGeneratorComponent,
+    QrCodeScannerComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +51,10 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     FullCalendarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    BarecodeScannerLivestreamModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, BarecodeScannerLivestreamModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {
