@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import {HcHomeComponent} from './hc-home/hc-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    HcHomeComponent
   ],
   imports: [
     BrowserModule,
