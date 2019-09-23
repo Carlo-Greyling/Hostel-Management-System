@@ -21,6 +21,7 @@ export class AuthService {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
+          this.user$ = null;
           return of(null);
         }
       })
@@ -29,12 +30,25 @@ export class AuthService {
 
   async googleSignIn() {
     const provider = new auth.GoogleAuthProvider();
-    const credential = await this.afAuth.auth.signInWithPopup(provider);
-    return this.updateUserData(credential.user);
+    const credential = await this.afAuth.auth.signInWithPopup(provider)
+      .then((result) => {
+        this.updateUserData(result.user);
+        localStorage.setItem('uid', result.user.uid);
+        this.router.navigate(['hc-home/calender']);
+      });
+  }
+
+  isLoggedIn() {
+    if (this.user$ === null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   async signOut() {
     await this.afAuth.auth.signOut();
+    localStorage.clear();
     return this.router.navigateByUrl('login');
   }
 
@@ -46,6 +60,7 @@ export class AuthService {
     photoURL: user.photoURL,
     uid: user.uid
     };
+    localStorage.setItem('uid', user.uid);
     return userRef.set(data, { merge: true });
   }
 }

@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {Router} from '@angular/router';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-hc-home',
@@ -15,7 +16,8 @@ export class HcHomeComponent implements OnDestroy {
 
   private mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private router: Router,
+              private auth: AuthService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
@@ -27,7 +29,7 @@ export class HcHomeComponent implements OnDestroy {
   }
 
   onLogOutClicked() {
-    this.router.navigateByUrl('login');
+    this.auth.signOut();
   }
 
   /*onCalenderClicked() {

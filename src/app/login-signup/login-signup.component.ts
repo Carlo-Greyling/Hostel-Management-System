@@ -9,7 +9,7 @@ import {AuthService} from '../services/auth.service';
   styleUrls: ['./login-signup.component.scss']
 })
 export class LoginSignupComponent implements OnInit {
-  signInMessage = 'Please log in with your 12345678@student.g.nwu.ac.za email address!'
+  signInMessage = 'Please log in with your 12345678@student.g.nwu.ac.za email address!';
 
   constructor(private router: Router,
               public auth: AuthService) { }
@@ -17,12 +17,7 @@ export class LoginSignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  LogIn(form: NgForm) {
-    const value = form.value;
-    if (value.username === 'admin') {
-      if (value.password === 'admin') {
-        this.router.navigate(['hc-home']);
-      }
-    }
+  LogIn() {
+    this.auth.googleSignIn();
   }
 }

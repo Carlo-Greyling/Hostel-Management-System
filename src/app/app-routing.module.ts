@@ -8,11 +8,11 @@ import {CanActivateGuard} from './services/can-activate.guard';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'hc-home' },
   { path: 'login', component: LoginSignupComponent },
   { path: 'hc-home', component: HcHomeComponent, children: [
-      { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard] },
-      { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard] }
+      { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
+      { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard]}
     ], canActivate: [CanActivateGuard]}
 ];
 
