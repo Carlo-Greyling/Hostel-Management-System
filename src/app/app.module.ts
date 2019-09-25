@@ -21,7 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
-import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
+import { FormatsDialogComponent } from './src/app/qr-code-scanner/formats-dialog/formats-dialog.component';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
     HcHomeComponent,
     CalenderComponent,
     AttendanceComponent,
-    QRCodeGeneratorComponent,
-    QrCodeScannerComponent
+    QrCodeScannerComponent,
+    FormatsDialogComponent,
+    QrScannerComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,9 +54,8 @@ import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
     MatDatepickerModule,
     MatNativeDateModule,
     NgxQRCodeModule,
-    BarecodeScannerLivestreamModule
   ],
-  providers: [MatDatepickerModule, BarecodeScannerLivestreamModule],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {
