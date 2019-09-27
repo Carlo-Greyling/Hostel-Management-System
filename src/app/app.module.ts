@@ -31,6 +31,7 @@ import { FormatsDialogComponent } from './src/app/qr-code-scanner/formats-dialog
     HcHomeComponent,
     CalenderComponent,
     AttendanceComponent,
+    QRCodeGeneratorComponent
     // QRScannerComponent
     /*QrCodeScannerComponent,
     FormatsDialogComponent,
