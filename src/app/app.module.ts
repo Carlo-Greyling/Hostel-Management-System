@@ -18,11 +18,11 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+// import { QRScannerComponent } from 'src/app/qr-scanner/zxing-scanner-demo';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
-import { FormatsDialogComponent } from './src/app/qr-code-scanner/formats-dialog/formats-dialog.component';
-import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+/*import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import { FormatsDialogComponent } from './src/app/qr-code-scanner/formats-dialog/formats-dialog.component';*/
 
 @NgModule({
   declarations: [
@@ -31,9 +31,10 @@ import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
     HcHomeComponent,
     CalenderComponent,
     AttendanceComponent,
-    QrCodeScannerComponent,
+    // QRScannerComponent
+    /*QrCodeScannerComponent,
     FormatsDialogComponent,
-    QrScannerComponent,
+    QrScannerComponent,*/
   ],
   imports: [
     BrowserModule,

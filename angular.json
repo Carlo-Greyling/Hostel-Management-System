@@ -126,6 +126,372 @@
           }
         }
       }
+    },
+    "ngx-scanner": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ngx-scanner",
+      "sourceRoot": "projects/ngx-scanner/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-scanner",
+            "index": "projects/ngx-scanner/src/index.html",
+            "main": "projects/ngx-scanner/src/main.ts",
+            "polyfills": "projects/ngx-scanner/src/polyfills.ts",
+            "tsConfig": "projects/ngx-scanner/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/ngx-scanner/src/favicon.ico",
+              "projects/ngx-scanner/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-scanner/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-scanner/src/environments/environment.ts",
+                  "with": "projects/ngx-scanner/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-scanner:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-scanner:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-scanner:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-scanner/src/test.ts",
+            "polyfills": "projects/ngx-scanner/src/polyfills.ts",
+            "tsConfig": "projects/ngx-scanner/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-scanner/karma.conf.js",
+            "assets": [
+              "projects/ngx-scanner/src/favicon.ico",
+              "projects/ngx-scanner/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-scanner/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-scanner/tsconfig.app.json",
+              "projects/ngx-scanner/tsconfig.spec.json",
+              "projects/ngx-scanner/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngx-scanner/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-scanner:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-scanner:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "zxing-scanner": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/zxing-scanner",
+      "sourceRoot": "projects/zxing-scanner/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/zxing-scanner",
+            "index": "projects/zxing-scanner/src/index.html",
+            "main": "projects/zxing-scanner/src/main.ts",
+            "polyfills": "projects/zxing-scanner/src/polyfills.ts",
+            "tsConfig": "projects/zxing-scanner/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/zxing-scanner/src/favicon.ico",
+              "projects/zxing-scanner/src/assets"
+            ],
+            "styles": [
+              "projects/zxing-scanner/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/zxing-scanner/src/environments/environment.ts",
+                  "with": "projects/zxing-scanner/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "zxing-scanner:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "zxing-scanner:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "zxing-scanner:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/zxing-scanner/src/test.ts",
+            "polyfills": "projects/zxing-scanner/src/polyfills.ts",
+            "tsConfig": "projects/zxing-scanner/tsconfig.spec.json",
+            "karmaConfig": "projects/zxing-scanner/karma.conf.js",
+            "assets": [
+              "projects/zxing-scanner/src/favicon.ico",
+              "projects/zxing-scanner/src/assets"
+            ],
+            "styles": [
+              "projects/zxing-scanner/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/zxing-scanner/tsconfig.app.json",
+              "projects/zxing-scanner/tsconfig.spec.json",
+              "projects/zxing-scanner/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/zxing-scanner/e2e/protractor.conf.js",
+            "devServerTarget": "zxing-scanner:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "zxing-scanner:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "zxing-scanner-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/zxing-scanner-demo",
+      "sourceRoot": "projects/zxing-scanner-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/zxing-scanner-demo",
+            "index": "projects/zxing-scanner-demo/src/index.html",
+            "main": "projects/zxing-scanner-demo/src/main.ts",
+            "polyfills": "projects/zxing-scanner-demo/src/polyfills.ts",
+            "tsConfig": "projects/zxing-scanner-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/zxing-scanner-demo/src/favicon.ico",
+              "projects/zxing-scanner-demo/src/assets"
+            ],
+            "styles": [
+              "projects/zxing-scanner-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/zxing-scanner-demo/src/environments/environment.ts",
+                  "with": "projects/zxing-scanner-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "zxing-scanner-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "zxing-scanner-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "zxing-scanner-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/zxing-scanner-demo/src/test.ts",
+            "polyfills": "projects/zxing-scanner-demo/src/polyfills.ts",
+            "tsConfig": "projects/zxing-scanner-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/zxing-scanner-demo/karma.conf.js",
+            "assets": [
+              "projects/zxing-scanner-demo/src/favicon.ico",
+              "projects/zxing-scanner-demo/src/assets"
+            ],
+            "styles": [
+              "projects/zxing-scanner-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/zxing-scanner-demo/tsconfig.app.json",
+              "projects/zxing-scanner-demo/tsconfig.spec.json",
+              "projects/zxing-scanner-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/zxing-scanner-demo/e2e/protractor.conf.js",
+            "devServerTarget": "zxing-scanner-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "zxing-scanner-demo:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "hostel-management-app"
 }
