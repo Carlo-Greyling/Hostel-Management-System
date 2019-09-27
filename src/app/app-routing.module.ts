@@ -5,6 +5,7 @@ import {HcHomeComponent} from './hc-home/hc-home.component';
 import {CalenderComponent} from './calender/calender.component';
 import {AttendanceComponent} from './attendance/attendance.component';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+// import { ZxingScannerDemoComponent } from './projects/zxing-scanner-demo/src/app/app.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'attendance', component: AttendanceComponent }
     ]},
   { path: 'qr-code', component: QRCodeGeneratorComponent },
+  // { path: 'qr-scanner', component: ZxingScannerDemoComponent }
 ];
 
 @NgModule({
