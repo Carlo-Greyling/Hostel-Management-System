@@ -23,6 +23,8 @@ import {AngularFirestore} from "@angular/fire/firestore";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireAuth} from "@angular/fire/auth";
+import {FirebaseService} from "./services/firebase.service";
+import { ResidentComponent } from './resident/resident.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {AngularFireAuth} from "@angular/fire/auth";
     LoginSignupComponent,
     HcHomeComponent,
     CalenderComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    ResidentComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import {AngularFireAuth} from "@angular/fire/auth";
     MatDatepickerModule,
     AuthService,
     AngularFirestore,
-    AngularFireAuth
+    AngularFireAuth,
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

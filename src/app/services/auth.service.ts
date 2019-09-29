@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable, of} from 'rxjs';
-import {User} from '../models/user.model';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {switchMap} from 'rxjs/operators';
 import {auth} from 'firebase';
+
+export interface User {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  uid: string;
+}
 
 @Injectable({
   providedIn: 'root'
