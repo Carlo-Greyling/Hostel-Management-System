@@ -21,10 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
-// import { ZXingScannerComponent } from './QR-Scanner/zxing-scanner/src/lib/zxing-scanner.component';
-// import { ZXingScannerDemoComponent } from './QR-Scanner/zxing-scanner-demo/src/app/app.component';
-// import { ZXingScannerComponent } from './projects/zxing-scanner/src/lib/zxing-scanner.component';
-// import { ZxingScannerDemoComponent } from './projects/zxing-scanner-demo/src/app/app.component';
+import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [
@@ -34,6 +32,7 @@ import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-nam
     CalenderComponent,
     AttendanceComponent,
     QRCodeGeneratorComponent,
+    QrCodeScannerComponent,
     // ZXingScannerComponent,
     // ZXingScannerDemoComponent,
   ],
@@ -56,6 +55,7 @@ import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-nam
     MatDatepickerModule,
     MatNativeDateModule,
     NgxQRCodeModule,
+    ZXingScannerModule,
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]

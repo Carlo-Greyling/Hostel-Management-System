@@ -1,39 +1,35 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
-import { BehaviorSubject } from 'rxjs';
-import { FormatsDialogComponent } from './formats-dialog/formats-dialog.component';
-import { AppInfoDialogComponent } from './app-info-dialog/app-info-dialog.component';
+import {BehaviorSubject} from 'rxjs';
+import {MatDialog} from '@angular/material';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-qr-code-scanner',
+  templateUrl: './qr-code-scanner.component.html',
+  styleUrls: ['./qr-code-scanner.component.scss']
 })
-export class AppComponent {
-
+export class QrCodeScannerComponent implements OnInit {
   availableDevices: MediaDeviceInfo[];
   currentDevice: MediaDeviceInfo = null;
-
-  formatsEnabled: BarcodeFormat[] = [
-    BarcodeFormat.CODE_128,
-    BarcodeFormat.DATA_MATRIX,
-    BarcodeFormat.EAN_13,
-    BarcodeFormat.QR_CODE,
-  ];
-
   hasDevices: boolean;
   hasPermission: boolean;
-
-  qrResultString: string;
 
   torchEnabled = false;
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = false;
 
+  qrResultString: string;
+
+  formatsEnabled: BarcodeFormat[] = [
+    /*BarcodeFormat.CODE_128,
+    BarcodeFormat.DATA_MATRIX,
+    BarcodeFormat.EAN_13,*/
+    BarcodeFormat.QR_CODE,
+  ];
+
   constructor(private readonly _dialog: MatDialog) { }
 
-  clearResult(): void {
+  clearResult() {
     this.qrResultString = null;
   }
 
@@ -46,12 +42,12 @@ export class AppComponent {
     this.qrResultString = resultString;
   }
 
-  onDeviceSelectChange(selected: string) {
+  /*onDeviceSelectChange(selected: string) {
     const device = this.availableDevices.find(x => x.deviceId === selected);
     this.currentDevice = device || null;
-  }
+  }*/
 
-  openFormatsDialog() {
+  /*openFormatsDialog() {
     const data = {
       formatsEnabled: this.formatsEnabled,
     };
@@ -60,30 +56,35 @@ export class AppComponent {
       .open(FormatsDialogComponent, { data })
       .afterClosed()
       .subscribe(x => { if (x) { this.formatsEnabled = x; } });
-  }
+  }*/
 
   onHasPermission(has: boolean) {
     this.hasPermission = has;
   }
 
-  openInfoDialog() {
+  /*openInfoDialog() {
     const data = {
       hasDevices: this.hasDevices,
       hasPermission: this.hasPermission,
     };
 
     this._dialog.open(AppInfoDialogComponent, { data });
-  }
+  }*/
 
   onTorchCompatible(isCompatible: boolean): void {
     this.torchAvailable$.next(isCompatible || false);
   }
 
-  toggleTorch(): void {
+  /*toggleTorch(): void {
     this.torchEnabled = !this.torchEnabled;
   }
 
   toggleTryHarder(): void {
     this.tryHarder = !this.tryHarder;
+  }*/
+
+  ngOnInit() {
+      this.qrResultString = null;
   }
+
 }
