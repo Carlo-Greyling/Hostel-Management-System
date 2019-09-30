@@ -1,4 +1,4 @@
-<button type="submit" (click)="openForm()">Open</button>
+<button type="submit" (click)="openForm('poes')">Open</button>
 <div class="scanner-shell" [hidden]="!hasDevices">
   <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
                [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
@@ -10,7 +10,7 @@
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button>
   </section>
-  <button type="submit" (click)="openForm()"></button>
+  <button type="submit" (click)="openForm('poes')"></button>
 </div>
 
 <div class="form-popup" id="successfulScan">

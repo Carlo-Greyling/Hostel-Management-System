@@ -27,7 +27,7 @@ export class HcHomeComponent implements OnDestroy, OnInit {
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
 
-    this.loggedInUsername = this.fbs.getLoggedInUsernam();
+    this.loggedInUsername = this.fbs.getLoggedInUsername();
     this.studentEmail = this.fbs.getStudentEmail();
     this.profilePictureUrl = this.fbs.getProfilePicURL();
   }
@@ -38,7 +38,7 @@ export class HcHomeComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedInUsername = this.fbs.getLoggedInUsernam();
+    this.loggedInUsername = this.fbs.getLoggedInUsername();
     this.studentEmail = this.fbs.getStudentEmail();
     this.profilePictureUrl = this.fbs.getProfilePicURL();
   }

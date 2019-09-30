@@ -8,12 +8,29 @@ export class FirebaseService {
   loggedInUsername = '';
   studentEmail = '';
   profilePictureUrl = '';
+  userRef;
+  uid;
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore) {
+    this.userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
+  }
 
-  getLoggedInUsernam() {
-    const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
-    const getDoc = userRef.get().toPromise()
+  getLoggedInUsername() {
+    // const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
+    const getDoc = this.userRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('GetProfileData-fbs: Profile not found!');
+        } else {
+          this.loggedInUsername = doc.data().displayName;
+        }
+      });
+    return this.loggedInUsername;
+  }
+
+  getLoggedInUsernameWithPar(studentNumber) {
+    const ref = this.db.collection('users').doc(studentNumber);
+    const getDoc = this.userRef.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
           console.log('GetProfileData-fbs: Profile not found!');
@@ -25,8 +42,21 @@ export class FirebaseService {
   }
 
   getStudentEmail() {
-    const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
-    const getDoc = userRef.get().toPromise()
+    // const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
+    const getDoc = this.userRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('GetProfileData-fbs: Profile not found!');
+        } else {
+          this.studentEmail = doc.data().email;
+        }
+      });
+    return this.studentEmail;
+  }
+
+  getStudentEmailWithPar(studentNumber) {
+    const ref = this.db.collection('users').doc(studentNumber);
+    const getDoc = this.userRef.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
           console.log('GetProfileData-fbs: Profile not found!');
@@ -38,8 +68,8 @@ export class FirebaseService {
   }
 
   getProfilePicURL() {
-    const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
-    const getDoc = userRef.get().toPromise()
+    // const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
+    const getDoc = this.userRef.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
           console.log('GetProfileData-fbs: Profile not found!');
@@ -48,5 +78,18 @@ export class FirebaseService {
         }
       });
     return this.profilePictureUrl;
+  }
+
+  getUidWithStudentNum(studentNumber) {
+    const studentRef = this.db.collection('students').doc(studentNumber);
+    const getDoc = studentRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('getUidWithStudentNum-fbs: Profile not found!');
+        } else {
+          this.uid = doc.data().uid;
+        }
+      });
+    return this.uid;
   }
 }
