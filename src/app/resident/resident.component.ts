@@ -27,9 +27,9 @@ export class ResidentComponent implements OnInit {
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
 
-    this.loggedInUsername = this.fbs.getLoggedInUsername();
-    this.studentEmail = this.fbs.getStudentEmail();
-    this.profilePictureUrl = this.fbs.getProfilePicURL();
+    this.loggedInUsername = localStorage.getItem('username');
+    this.studentEmail = localStorage.getItem('email');
+    this.profilePictureUrl = localStorage.getItem('picurl');
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -38,9 +38,9 @@ export class ResidentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedInUsername = this.fbs.getLoggedInUsername();
-    this.studentEmail = this.fbs.getStudentEmail();
-    this.profilePictureUrl = this.fbs.getProfilePicURL();
+    this.loggedInUsername = localStorage.getItem('username');
+    this.studentEmail = localStorage.getItem('email');
+    this.profilePictureUrl = localStorage.getItem('picurl');
   }
 
   onLogOutClicked() {
