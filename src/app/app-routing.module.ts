@@ -7,6 +7,7 @@ import {AttendanceComponent} from './attendance/attendance.component';
 import {CanActivateGuard} from './services/can-activate.guard';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'hc-home' },
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
       { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard]},
       { path: 'qr-code', component: QRCodeGeneratorComponent, canActivate: [CanActivateGuard]},
-      { path: 'qr-scanner', component: QrCodeScannerComponent, canActivate: [CanActivateGuard]}
+      { path: 'qr-scanner', component: QrCodeScannerComponent, canActivate: [CanActivateGuard]},
+      { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]}
     ], canActivate: [CanActivateGuard]}
 ];
 
