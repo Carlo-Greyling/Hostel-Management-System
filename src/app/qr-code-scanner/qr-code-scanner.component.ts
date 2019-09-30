@@ -14,6 +14,8 @@ export class QrCodeScannerComponent implements OnInit {
   studentNumber: string;
   studentImage: string;
 
+  validAttendance = [];
+
   availableDevices: MediaDeviceInfo[];
   currentDevice: MediaDeviceInfo = null;
   hasDevices: boolean;
@@ -47,6 +49,10 @@ export class QrCodeScannerComponent implements OnInit {
     this.qrResultString = resultString;
     this.playAudio();
     this.openForm(resultString);
+  }
+
+  validate(resultString: string) {
+    this.validAttendance.push(resultString);
   }
 
   updateDatabase() {

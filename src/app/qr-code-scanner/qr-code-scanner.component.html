@@ -1,16 +1,15 @@
-<button type="submit" (click)="openForm()">Open</button>
+<button type="submit" (click)="openForm(qrResultString)">Open</button>
 <div class="scanner-shell" [hidden]="!hasDevices">
   <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
                [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
                (camerasFound)="onCamerasFound($event)" (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
-  <section class="results" *ngIf="qrResultString">
+  <!--section class="results" *ngIf="qrResultString">
     <div>
       <small>Result</small>
       <strong>{{ qrResultString }}</strong>
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button>
-  </section>
-  <button type="submit" (click)="openForm()"></button>
+  </section-->
 </div>
 
 <div class="form-popup" id="successfulScan">
@@ -24,7 +23,7 @@
     <label for="nameSurname"><b>Student Names</b></label>
     <p id="nameSurname">{{ studentName }} {{ " " + studentSurname }}</p>
 
-    <button type="submit" class="btn" (click)="updateDatabase()">Update</button>
+    <button type="submit" class="btn" (click)="validate()">Update</button>
     <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
