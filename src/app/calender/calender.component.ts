@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import {CalendarEvent} from '../models/calendarevent.model';
 
-export interface CalendarEvent {
+/*export interface CalendarEvent {
   title: string;
   date: string;
   description: string;
-}
+}*/
 
 @Component({
   selector: 'app-calender',

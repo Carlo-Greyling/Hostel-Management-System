@@ -1,26 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-<<<<<<< HEAD
-import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
-=======
 import {HcHomeComponent} from './hc-home/hc-home.component';
 import {CalenderComponent} from './calender/calender.component';
 import {AttendanceComponent} from './attendance/attendance.component';
->>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
+<<<<<<< HEAD
+import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+=======
+import {CanActivateGuard} from './services/can-activate.guard';
 
+>>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'hc-home' },
   { path: 'login', component: LoginSignupComponent },
-<<<<<<< HEAD
-  { path: 'qr-code', component: QRCodeGeneratorComponent }
-=======
   { path: 'hc-home', component: HcHomeComponent, children: [
+<<<<<<< HEAD
       { path: 'calender', component: CalenderComponent },
       { path: 'attendance', component: AttendanceComponent }
-    ]}
->>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
+    ]},
+  { path: 'qr-code', component: QRCodeGeneratorComponent },
+  { path: 'qr-scanner', component: QrCodeScannerComponent },
+=======
+      { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
+      { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard]}
+    ], canActivate: [CanActivateGuard]}
+>>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
 ];
 
 @NgModule({

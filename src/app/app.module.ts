@@ -1,5 +1,5 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +16,16 @@ import { AvatarModule } from 'ngx-avatar';
 import { CalenderComponent } from './calender/calender.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {AuthService} from './services/auth.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {FirebaseService} from './services/firebase.service';
+import { ResidentComponent } from './resident/resident.component';
+
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
@@ -31,10 +39,9 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     HcHomeComponent,
     CalenderComponent,
     AttendanceComponent,
+    ResidentComponent,
     QRCodeGeneratorComponent,
     QrCodeScannerComponent,
-    // ZXingScannerComponent,
-    // ZXingScannerDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,10 +61,19 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     FullCalendarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase),
     NgxQRCodeModule,
     ZXingScannerModule,
   ],
-  providers: [MatDatepickerModule],
+  providers: [
+    MatDatepickerModule,
+    AuthService,
+    AngularFirestore,
+    AngularFireAuth,
+    FirebaseService,
+    NgxQRCodeModule,
+    ZXingScannerModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

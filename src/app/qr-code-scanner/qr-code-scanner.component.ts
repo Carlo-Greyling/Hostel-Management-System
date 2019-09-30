@@ -9,6 +9,11 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./qr-code-scanner.component.scss']
 })
 export class QrCodeScannerComponent implements OnInit {
+  studentName: string;
+  studentSurname: string;
+  studentNumber: string;
+  studentImage: string;
+
   availableDevices: MediaDeviceInfo[];
   currentDevice: MediaDeviceInfo = null;
   hasDevices: boolean;
@@ -40,6 +45,31 @@ export class QrCodeScannerComponent implements OnInit {
 
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
+    this.playAudio();
+    this.openForm(resultString);
+  }
+
+  updateDatabase() {
+
+  }
+
+  openForm(resultString: string) {
+    document.getElementById('successfulScan').style.display = 'block';
+    this.studentNumber = resultString;
+  }
+
+  closeForm() {
+    function closeForm() {
+      document.getElementById('successfulScan').style.display = 'none';
+    }
+    this.clearResult();
+  }
+
+  playAudio() {
+    const audio = new Audio();
+    audio.src = '';
+    audio.load();
+    audio.play();
   }
 
   /*onDeviceSelectChange(selected: string) {
@@ -85,6 +115,11 @@ export class QrCodeScannerComponent implements OnInit {
 
   ngOnInit() {
       this.qrResultString = null;
+    // tslint:disable-next-line:max-line-length
+      /*this.studentImage = 'https://scontent-jnb1-1.xx.fbcdn.net/v/t1.0-9/33961022_890902067768346_5437623309078364160_n.jpg?_nc_cat=104&_nc_oc=AQm1LG8Rvyj6GmK7CRQnP4bqOqgDOs-Yt2TfwZH5n9CKpB4sWfyx7_AIxqMTvRtYTKo&_nc_ht=scontent-jnb1-1.xx&oh=b848f48955c1d85f04fbeb71feb6923e&oe=5DEF4FED';
+      this.studentName = 'Carlo';
+      this.studentSurname = 'Greyling';
+      this.studentNumber = 29685532;*/
   }
 
 }

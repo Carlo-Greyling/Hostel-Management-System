@@ -1,40 +1,61 @@
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
+<<<<<<< HEAD
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+=======
+import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
+import {InjectionToken, NgModule} from '@angular/core';
+>>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-import {FormsModule} from '@angular/forms';
-<<<<<<< HEAD
-import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
-=======
-import {HcHomeComponent} from './hc-home/hc-home.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {HttpClientModule} from '@angular/common/http';
-import {AvatarModule} from 'ngx-avatar';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { HcHomeComponent } from './hc-home/hc-home.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { AvatarModule } from 'ngx-avatar';
 import { CalenderComponent } from './calender/calender.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+<<<<<<< HEAD
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
+import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+=======
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
->>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
+import {AuthService} from "./services/auth.service";
+import {AngularFirestore} from "@angular/fire/firestore";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireAuth} from "@angular/fire/auth";
+import {FirebaseService} from "./services/firebase.service";
+import { ResidentComponent } from './resident/resident.component';
+>>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginSignupComponent,
-<<<<<<< HEAD
-    QRCodeGeneratorComponent
-=======
     HcHomeComponent,
     CalenderComponent,
-    AttendanceComponent
->>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
+    AttendanceComponent,
+<<<<<<< HEAD
+    QRCodeGeneratorComponent,
+    QrCodeScannerComponent,
+    // ZXingScannerComponent,
+    // ZXingScannerDemoComponent,
+=======
+    ResidentComponent
+>>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
   ],
   imports: [
     BrowserModule,
@@ -45,9 +66,6 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
-    NgxQRCodeModule
-=======
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
@@ -56,10 +74,21 @@ import {MatNativeDateModule} from "@angular/material/core";
     AvatarModule,
     FullCalendarModule,
     MatDatepickerModule,
-    MatNativeDateModule
->>>>>>> d853d9a4a1e012393933e812a04f27b203220c82
+    MatNativeDateModule,
+<<<<<<< HEAD
+    NgxQRCodeModule,
+    ZXingScannerModule,
+=======
+    AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [MatDatepickerModule],
+  providers: [
+    MatDatepickerModule,
+    AuthService,
+    AngularFirestore,
+    AngularFireAuth,
+    FirebaseService
+>>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
