@@ -1,1 +1,15 @@
-<p>repairs works!</p>
+<mat-card>
+  <div style="text-align: center;">
+    <h3 >Repairs</h3>
+    <p>Hello {{ studentName }}, we are so sorry to see you here. No worries though, you can easily file a repair request with us,
+      and we'll get back to you as soon as possible! Once you fill in a repair request, we'll immediately send your request
+    to the applicable parties, along with a ticket containing a reference number to your student email 12345678@student.g.nwu.ac.za</p>
+    <mat-form-field style="position: relative; width: 60%; padding: 5px">
+      <input matInput placeholder="Enter room number">
+    </mat-form-field>
+    <mat-form-field style="position: relative; width: 60%; padding: 5px; max-height: 50%">
+      <textarea cdkTextareaAutosize cdkAutosizeMaxRows="10" matInput placeholder="Description"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" style="width: 60%;" type="submit">Submit Request</button>
+  </div>
+</mat-card>
