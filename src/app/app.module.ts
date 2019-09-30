@@ -31,6 +31,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     ResidentComponent,
     QRCodeGeneratorComponent,
     QrCodeScannerComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
