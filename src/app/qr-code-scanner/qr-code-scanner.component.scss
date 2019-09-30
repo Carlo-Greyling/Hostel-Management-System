@@ -81,8 +81,12 @@ h2 {
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  position: fixed;
+  position: absolute;
   text-align: center;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 80%;
   border: 3px solid #f1f1f1;
   z-index: 9;
 }
@@ -90,10 +94,6 @@ h2 {
 /* Add styles to the form container */
 .form-container {
   text-align: center;
-  left: 10%;
-  top: 10%;
-  width: 80%;
-  height: 80%;
   padding: 10px;
   background-color: white;
 }
