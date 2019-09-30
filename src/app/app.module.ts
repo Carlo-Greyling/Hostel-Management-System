@@ -33,6 +33,8 @@ import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.compon
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { RepairsComponent } from './repairs/repairs.component';
     QrCodeScannerComponent,
     ProfileComponent,
     RepairsComponent,
+    EventDetailsComponent,
+    AddEventComponent,
   ],
   imports: [
     BrowserModule,

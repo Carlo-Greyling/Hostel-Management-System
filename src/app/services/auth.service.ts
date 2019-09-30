@@ -43,7 +43,22 @@ export class AuthService {
         localStorage.setItem('email', result.user.email);
         localStorage.setItem('username', result.user.displayName);
         localStorage.setItem('picurl', result.user.photoURL);
-        this.router.navigate(['hc-home/calender']);
+        const userRef = this.afs.collection('users').doc(result.user.uid);
+        const getDoc = userRef.get().toPromise()
+          .then(doc => {
+            if (!doc.exists) {
+              console.log('Google SignIN-auth: Profile not found!');
+            } else {
+              const userType = doc.data().userType;
+              if (userType === 'res') {
+                this.router.navigate(['residents-home/calender']);
+              }
+              if (userType === 'hc') {
+                this.router.navigate(['hc-home/calender']);
+              }
+            }
+          });
+        // this.router.navigate(['hc-home/calender']);
       });
   }
 
