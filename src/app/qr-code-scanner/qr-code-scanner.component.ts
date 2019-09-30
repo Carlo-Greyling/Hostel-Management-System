@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import {BehaviorSubject} from 'rxjs';
 import {MatDialog} from '@angular/material';
+import {FirebaseService} from '../services/firebase.service';
 
 @Component({
   selector: 'app-qr-code-scanner',
@@ -10,9 +11,9 @@ import {MatDialog} from '@angular/material';
 })
 export class QrCodeScannerComponent implements OnInit {
   studentName: string;
-  studentSurname: string;
   studentNumber: string;
   studentImage: string;
+  userID: string;
 
   validAttendance = [];
 
@@ -34,7 +35,7 @@ export class QrCodeScannerComponent implements OnInit {
     BarcodeFormat.QR_CODE,
   ];
 
-  constructor(private readonly _dialog: MatDialog) { }
+  constructor(private readonly _dialog: MatDialog, private fps: FirebaseService) { }
 
   clearResult() {
     this.qrResultString = null;
@@ -47,8 +48,12 @@ export class QrCodeScannerComponent implements OnInit {
 
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
-    this.playAudio();
+    // this.playAudio();
     this.openForm(resultString);
+    this.userID = this.fps.getUidWithStudentNum(resultString);
+    this.studentImage = this.fps.getProfilePicURLWithPar(this.userID);
+    this.studentNumber = resultString;
+    this.studentName = this.fps.getLoggedInUsernameWithPar(this.userID);
   }
 
   validate(resultString: string) {
@@ -71,12 +76,12 @@ export class QrCodeScannerComponent implements OnInit {
     this.clearResult();
   }
 
-  playAudio() {
+  /*playAudio() {
     const audio = new Audio();
     audio.src = '';
     audio.load();
     audio.play();
-  }
+  }*/
 
   /*onDeviceSelectChange(selected: string) {
     const device = this.availableDevices.find(x => x.deviceId === selected);

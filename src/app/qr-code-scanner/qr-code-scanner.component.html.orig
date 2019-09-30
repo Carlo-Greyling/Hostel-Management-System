@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+<button type="submit" (click)="openForm(qrResultString)">Open</button>
+=======
+<button type="submit" (click)="openForm('poes')">Open</button>
+>>>>>>> 92885bf9f47e9acf39a1cf3f1ef8bf8b77ff3742
 <div class="scanner-shell" [hidden]="!hasDevices">
   <zxing-scanner [torch]="torchEnabled" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
                [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
@@ -8,7 +13,12 @@
       <strong>{{ qrResultString }}</strong>
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button>
+<<<<<<< HEAD
   </section-->
+=======
+  </section>
+  <button type="submit" (click)="openForm('poes')"></button>
+>>>>>>> 92885bf9f47e9acf39a1cf3f1ef8bf8b77ff3742
 </div>
 
 <div class="form-popup" id="successfulScan">
@@ -20,9 +30,9 @@
     <h5 id="studentNumber">{{ studentNumber }}</h5>
 
     <label for="nameSurname"><b>Student Names</b></label>
-    <p id="nameSurname">{{ studentName }}</p>
+    <p id="nameSurname">{{ studentName }} {{ " " + studentSurname }}</p>
 
-    <button type="submit" class="btn" (click)="validate(qrResultString)">Update</button>
+    <button type="submit" class="btn" (click)="validate()">Update</button>
     <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
