@@ -5,6 +5,7 @@ import {AuthService} from '../services/auth.service';
 import {FirebaseService} from '../services/firebase.service';
 import {User} from '../models/user.model';
 import { RouterModule, Routes } from '@angular/router';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-hc-home',
@@ -28,9 +29,9 @@ export class HcHomeComponent implements OnDestroy, OnInit {
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
 
-    this.loggedInUsername = this.fbs.getLoggedInUsername();
-    this.studentEmail = this.fbs.getStudentEmail();
-    this.profilePictureUrl = this.fbs.getProfilePicURL();
+    this.loggedInUsername = localStorage.getItem('username');
+    this.studentEmail = localStorage.getItem('email');
+    this.profilePictureUrl = localStorage.getItem('picurl');
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -39,9 +40,12 @@ export class HcHomeComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedInUsername = this.fbs.getLoggedInUsername();
+    /*this.loggedInUsername = this.fbs.getLoggedInUsername();
     this.studentEmail = this.fbs.getStudentEmail();
-    this.profilePictureUrl = this.fbs.getProfilePicURL();
+    this.profilePictureUrl = this.fbs.getProfilePicURL();*/
+    this.loggedInUsername = localStorage.getItem('username');
+    this.studentEmail = localStorage.getItem('email');
+    this.profilePictureUrl = localStorage.getItem('picurl');
   }
 
   onLogOutClicked() {
@@ -51,4 +55,8 @@ export class HcHomeComponent implements OnDestroy, OnInit {
   /*onCalenderClicked() {
     this.router.navigateByUrl('calender');
   }*/
+  onClick(snav: MatSidenav) {
+    this.router.navigate(['/hc-home/qr-code']);
+    snav.toggle();
+  }
 }

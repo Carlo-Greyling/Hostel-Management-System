@@ -40,6 +40,9 @@ export class AuthService {
       .then((result) => {
         this.updateUserData(result.user);
         localStorage.setItem('uid', result.user.uid);
+        localStorage.setItem('email', result.user.email);
+        localStorage.setItem('username', result.user.displayName);
+        localStorage.setItem('picurl', result.user.photoURL);
         this.router.navigate(['hc-home/calender']);
       });
   }
