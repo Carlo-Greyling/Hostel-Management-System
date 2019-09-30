@@ -70,9 +70,7 @@ export class QrCodeScannerComponent implements OnInit {
   }
 
   closeForm() {
-    function closeForm() {
-      document.getElementById('successfulScan').style.display = 'none';
-    }
+    document.getElementById('successfulScan').style.display = 'none';
     this.clearResult();
   }
 

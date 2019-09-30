@@ -23,6 +23,6 @@
     <p id="nameSurname">{{ studentName }}</p>
 
     <button type="submit" class="btn" (click)="validate(qrResultString)">Update</button>
-    <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+    <button type="submit" class="btn cancel" (click)="closeForm()">Close</button>
   </form>
 </div>
