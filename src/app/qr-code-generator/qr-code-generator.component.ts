@@ -17,7 +17,7 @@ export class QRCodeGeneratorComponent implements OnInit {
 
   generateQRCode() {
     this.userID = localStorage.getItem('uid');
-    this.qrCodeEmail = this.fps.getStudentEmailWithPar(this.userID).substring(0, 8);
+    this.qrCodeEmail = localStorage.getItem('email').substring(0, 8);
     if (this.qrCodeEmail === '') {
       this.display = false;
       // alert('Invalid student email!!!');
