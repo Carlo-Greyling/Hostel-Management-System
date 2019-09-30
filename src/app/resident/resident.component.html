@@ -1,1 +1,33 @@
-<p>resident works!</p>
+<div class="my-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="my-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon class="white-icon" svgIcon="round-menu-24px" aria-hidden="false" aria-label="menu-icon"></mat-icon></button>
+    <h1 class="digiag">NWU Hostel Management</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="home-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav mode="over"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"> <!--[mode] = mobileQuery.matches ? 'over' : 'side' -->
+      <mat-nav-list class="sidenav-card">
+        <div class="container">
+          <mat-card style="background-color: #673ab7; text-align: center; align-content: center; align-items: center;">
+            <mat-card-content>
+              <ngx-avatar bgColor="#ffffff" fgColor="#673ab7;" src="{{ profilePictureUrl }}" size="50" [round]="true"></ngx-avatar>
+              <p style="color: white;">{{ loggedInUsername }}</p>
+              <p style="color: white;">{{ studentEmail }}</p>
+              <button mat-raised-button (click)="router.navigate(['/hc-home/qr-code'])">Show QR Code</button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <a mat-list-item routerLink="calender" (click)=snav.toggle()>Calender</a>
+        <!--a mat-list-item routerLink="qr-scanner" (click)=snav.toggle()>Attendance</a-->
+        <!--a mat-list-item routerLink="" (click)=snav.toggle()>Admin</a-->
+        <a mat-list-item routerLink="profile" (click)=snav.toggle()>My Profile</a>
+        <a mat-list-item (click)="onLogOutClicked()">Log Out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

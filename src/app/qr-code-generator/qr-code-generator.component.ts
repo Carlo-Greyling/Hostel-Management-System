@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import {MatDialog} from '@angular/material';
+import {FirebaseService} from '../services/firebase.service';
 
 @Component({
   selector: 'app-qr-code-generator',
@@ -11,8 +13,11 @@ export class QRCodeGeneratorComponent implements OnInit {
   display = false;
   value: string;
   elementType: 'url' | 'canvas' | 'img' = 'url';
+  userID: string;
 
   generateQRCode() {
+    this.userID = localStorage.getItem('uid');
+    this.qrCodeEmail = this.fps.getStudentEmailWithPar(this.userID).substring(0, 7);
     if (this.qrCodeEmail === '') {
       this.display = false;
       alert('Invalid student email!!!');
@@ -22,9 +27,10 @@ export class QRCodeGeneratorComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private fps: FirebaseService) { }
 
   ngOnInit() {
+    this.generateQRCode();
   }
 
 }

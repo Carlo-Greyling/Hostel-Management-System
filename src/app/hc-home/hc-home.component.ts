@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {FirebaseService} from '../services/firebase.service';
 import {User} from '../models/user.model';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-hc-home',

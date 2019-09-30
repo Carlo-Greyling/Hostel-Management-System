@@ -1,13 +1,22 @@
-<html>
+<!--html>
   <head>
     <title>
       QR Scanner
     </title>
   </head>
-  <body (keydown.enter)="generateQRCode()">
-    <input type="text" placeholder="Enter student email eg. 00000000@student.g.nwu.ac.za" [(ngModel)]="qrCodeEmail"><br>
-    <button (click)="generateQRCode()">Generate QR Code</button>
+  <body>
     <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "qrCodeEmail"></ngx-qrcode>
   <router-outlet></router-outlet>
   </body>
-</html>
+</html-->
+
+<div class="main-div">
+  <form #f="ngForm">
+    <mat-card style="text-align: center; padding: 32px;">
+      <!--ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "qrCodeEmail"></ngx-qrcode-->
+      <mat-card-content>
+        <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "qrCodeEmail"></ngx-qrcode>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>
