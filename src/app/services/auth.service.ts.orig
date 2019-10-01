@@ -39,6 +39,7 @@ export class AuthService {
   async googleSignIn() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider)
+<<<<<<< HEAD
       .then((result) => { // 29685532@student.g.nwu.ac.za
         if (result.user.email.substring(8, 28) === '@student.g.nwu.ac.za') {
           console.log('Student Email Valid');
@@ -60,6 +61,24 @@ export class AuthService {
                 if (userType === 'hc') {
                   this.router.navigate(['hc-home/calender']);
                 }
+=======
+      .then((result) => {
+        this.updateUserData(result.user);
+        localStorage.setItem('uid', result.user.uid);
+        localStorage.setItem('email', result.user.email);
+        localStorage.setItem('username', result.user.displayName);
+        localStorage.setItem('picurl', result.user.photoURL);
+        this.fbs.getUserType(result.user.uid);
+        const userRef = this.afs.collection('users').doc(result.user.uid);
+        const getDoc = userRef.get().toPromise()
+          .then(doc => {
+            if (!doc.exists) {
+              console.log('Google SignIN-auth: Profile not found!');
+            } else {
+              const userType = doc.data().userType;
+              if (userType === 'res') {
+                this.router.navigate(['residents-home/calender']);
+>>>>>>> c1afe84136f6882d5b0ba085bc1e828ae64ffefe
               }
             });
         } else {

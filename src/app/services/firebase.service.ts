@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {User} from '../models/user.model';
-import {Ticket} from './ticket.model';
-import * as firebase from 'firebase';
-import {RepairsComponent} from '../repairs/repairs.component';
+import {CalendarEvent} from "../models/calendarevent.model";
 
 @Injectable()
 export class FirebaseService {
@@ -13,9 +11,82 @@ export class FirebaseService {
   profilePictureUrl = '';
   userRef;
   uid;
+  userType;
+  hostelId = '';
+  events: CalendarEvent[] = [];
 
   constructor(private db: AngularFirestore) {
     this.userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
+  }
+
+  getHostelId() {
+    // const userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
+    const getDoc = this.userRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('getHostelId-fbs: Profile not found!');
+        } else {
+          this.hostelId = doc.data().hostelId;
+        }
+      });
+    return this.hostelId;
+  }
+
+  Addevent(hostelId, date, title, description) {
+    let dateArr: string[] = [];
+    let descArr: string[] = [];
+    let titleArr: string[] = [];
+
+    const ref = this.db.collection('hostels').doc(localStorage.getItem('hostelId'));
+    const getDoc = ref.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('not found');
+        } else {
+          dateArr = doc.data().date;
+          descArr = doc.data().description;
+          titleArr = doc.data().title;
+
+          dateArr.push(date);
+          descArr.push(description);
+          titleArr.push(title);
+
+          const data = {
+            date: dateArr,
+            description: descArr,
+            title: titleArr
+          };
+
+          ref.set(data);
+        }
+      }).catch(err => {
+        console.log('Error', err); // add toastr notification
+      });
+  }
+
+  getEvents(): CalendarEvent[] {
+    let dateArr: string[] = [];
+    let descArr: string[] = [];
+    let titleArr: string[] = [];
+
+    const ref = this.db.collection('hostels').doc(localStorage.getItem('hostelId'));
+    const getDoc = ref.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('not found');
+        } else {
+          dateArr = doc.data().date;
+          descArr = doc.data().description;
+          titleArr = doc.data().title;
+          for (let i = 0; i < dateArr.length; i++) {
+            this.events.push(new CalendarEvent(titleArr[i], dateArr[i], descArr[i]));
+          }
+        }
+      }).catch(err => {
+        console.log('Error', err); // add toastr notification
+      });
+    console.log(this.events);
+    return this.events;
   }
 
   getLoggedInUsername() {
@@ -107,5 +178,19 @@ export class FirebaseService {
         }
       });
     return this.uid;
+  }
+
+  getUserType(uid) {
+    const studentRef = this.db.collection('users').doc(uid);
+    const getDoc = studentRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('getUserType-fbs: Error');
+        } else {
+          this.userType = doc.data().userType;
+          localStorage.setItem('userType', this.userType);
+          localStorage.setItem('hostelId', doc.data().hostelId);
+        }
+      });
   }
 }

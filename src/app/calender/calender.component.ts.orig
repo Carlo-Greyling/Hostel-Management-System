@@ -3,9 +3,14 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import {CalendarEvent} from '../models/calendarevent.model';
+<<<<<<< HEAD
+import {MatDialog} from '@angular/material/dialog';
+import {EventDetailsComponent} from '../event-details/event-details.component';
+=======
 import {MatDialog} from "@angular/material/dialog";
 import {EventDetailsComponent} from "../event-details/event-details.component";
 import {FirebaseService} from "../services/firebase.service";
+>>>>>>> c1afe84136f6882d5b0ba085bc1e828ae64ffefe
 
 /*export interface CalendarEvent {
   title: string;
