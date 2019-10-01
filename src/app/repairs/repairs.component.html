@@ -3,7 +3,7 @@
     <h3 >Repairs</h3>
     <p>Hello {{ studentName }}, we are so sorry to see you here. No worries though, you can easily file a repair request with us,
       and we'll get back to you as soon as possible! Once you fill in a repair request, we'll immediately send your request
-    to the applicable parties, along with a ticket containing a reference number to your student email 12345678@student.g.nwu.ac.za</p>
+    to the applicable parties, along with a ticket containing a reference number to your student email {{ studentEmail }}</p>
     <mat-form-field style="position: relative; width: 60%; padding: 5px">
       <input id="roomNum" [(ngModel)]="roomNumber" matInput placeholder="Enter room number">
     </mat-form-field>

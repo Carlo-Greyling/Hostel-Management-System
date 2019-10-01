@@ -14,6 +14,7 @@ import {FirebaseDatabase, FirebaseFirestore} from '@angular/fire';
 export class RepairsComponent implements OnInit {
   public database = firebase.database();
 
+  studentEmail = localStorage.getItem('email');
   ticketNumber: string;
   studentNumber: string;
   studentName: string;
