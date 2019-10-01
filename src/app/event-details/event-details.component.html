@@ -1,1 +1,13 @@
-<p>event-details works!</p>
+<div style="padding: 8px; align-items: center;">
+  <h4>Selected Event Details:</h4>
+  <mat-form-field style="width: 100%;">
+    <input matInput disabled placeholder="{{ title }}">
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <input matInput disabled placeholder="{{ eventdate }}">
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <textarea matInput disabled placeholder="{{ description }}"></textarea>
+</mat-form-field>
+  <button mat-raised-button style="width: 100%;" (click)="onCloseClicked()" color="primary">Close</button>
+</div>

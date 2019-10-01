@@ -82,7 +82,8 @@ import { AddEventComponent } from './add-event/add-event.component';
     NgxQRCodeModule,
     ZXingScannerModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EventDetailsComponent, AddEventComponent]
 })
 export class AppModule {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
