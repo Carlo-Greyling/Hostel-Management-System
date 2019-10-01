@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import {CalendarEvent} from '../models/calendarevent.model';
+import {MatDialog} from "@angular/material/dialog";
+import {EventDetailsComponent} from "../event-details/event-details.component";
 
 /*export interface CalendarEvent {
   title: string;
@@ -15,7 +18,7 @@ import {CalendarEvent} from '../models/calendarevent.model';
   styleUrls: ['./calender.component.scss']
 })
 export class CalenderComponent implements OnInit {
-  calendarPlugins = [dayGridPlugin];
+  calendarPlugins = [dayGridPlugin, interactionPlugin];
   events: CalendarEvent[] = [
     {title: 'Event 1', date: '2019-09-24', description: 'event 1'},
     {title: 'Event 2', date: '2019-09-25', description: 'event 2'},
@@ -24,9 +27,33 @@ export class CalenderComponent implements OnInit {
     {title: 'Event 5', date: '2019-09-28', description: 'event 5'}
   ];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  /*SubmitAddFields() {
+    const dialogRef = this.dialog.open(CreatesubfieldComponent, {panelClass: 'custom-dialog-container',
+      data:
+        {
+          userEmail: this.selectedUserEmail,
+          userName: this.selectedUserFname,
+          id: this.selectedUserID
+        }
+    });
+  }*/
+
+  onDateClicked(event) {
+    console.log(event);
+    const dialogRef = this.dialog.open(EventDetailsComponent, {panelClass: 'custom-dialog-container',
+      data:
+        {
+          date: event.dateStr,
+          eventsArr: this.events
+          /*userEmail: this.selectedUserEmail,
+          userName: this.selectedUserFname,
+          id: this.selectedUserID*/
+        }
+    });
+  }
 }
