@@ -9,5 +9,10 @@
   <mat-form-field style="width: 100%;">
     <textarea matInput disabled placeholder="{{ description }}"></textarea>
 </mat-form-field>
-  <button mat-raised-button style="width: 100%;" (click)="onCloseClicked()" color="primary">Close</button>
+    <button
+      mat-raised-button
+      style="width: 100%; margin-bottom: 8px;"
+      (click)="onAddEventClicked()"
+      color="primary">Add Event (HC ONLY)</button>
+    <button mat-raised-button style="width: 100%;" (click)="onCloseClicked()" color="primary">Close</button>
 </div>

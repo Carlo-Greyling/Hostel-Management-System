@@ -5,6 +5,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {AngularFireAuth} from '@angular/fire/auth';
 import {switchMap} from 'rxjs/operators';
 import {auth} from 'firebase';
+import {FirebaseService} from './firebase.service';
 
 export interface User {
   displayName: string;
@@ -20,6 +21,7 @@ export class AuthService {
   user$: Observable<User>;
 
   constructor(private router: Router,
+              private fbs: FirebaseService,
               private afs: AngularFirestore,
               private afAuth: AngularFireAuth) {
     this.user$ = this.afAuth.authState.pipe(
@@ -43,6 +45,7 @@ export class AuthService {
         localStorage.setItem('email', result.user.email);
         localStorage.setItem('username', result.user.displayName);
         localStorage.setItem('picurl', result.user.photoURL);
+        this.fbs.getUserType(result.user.uid);
         const userRef = this.afs.collection('users').doc(result.user.uid);
         const getDoc = userRef.get().toPromise()
           .then(doc => {
@@ -80,9 +83,9 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
     const data = {
       displayName: user.displayName,
-    email: user.email,
-    photoURL: user.photoURL,
-    uid: user.uid
+      email: user.email,
+      photoURL: user.photoURL,
+      uid: user.uid
     };
     localStorage.setItem('uid', user.uid);
     return userRef.set(data, { merge: true });

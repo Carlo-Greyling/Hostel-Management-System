@@ -1,4 +1,4 @@
-export class CalendarEvent {
+export class NewEvent {
   title: string;
   date: string;
   description: string;
