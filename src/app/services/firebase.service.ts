@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {User} from '../models/user.model';
+import {Ticket} from './ticket.model';
+import * as firebase from 'firebase';
+import {RepairsComponent} from '../repairs/repairs.component';
 
 @Injectable()
 export class FirebaseService {
