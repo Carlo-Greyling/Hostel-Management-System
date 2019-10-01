@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HcHomeComponent } from './hc-home/hc-home.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -72,6 +72,7 @@ import { AddEventComponent } from './add-event/add-event.component';
     AngularFireModule.initializeApp(environment.firebase),
     NgxQRCodeModule,
     ZXingScannerModule,
+    MatDialogModule,
   ],
   providers: [
     MatDatepickerModule,
