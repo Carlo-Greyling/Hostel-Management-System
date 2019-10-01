@@ -3,6 +3,8 @@ import { Ticket } from '../services/ticket.model';
 import {FirebaseService} from '../services/firebase.service';
 import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
+import * as firebase from 'firebase';
+import {FirebaseDatabase, FirebaseFirestore} from '@angular/fire';
 
 @Component({
   selector: 'app-repairs',
@@ -10,26 +12,33 @@ import {AngularFireDatabase} from '@angular/fire/database';
   styleUrls: ['./repairs.component.scss']
 })
 export class RepairsComponent implements OnInit {
-  // public repairs: FirebaseListObservable<Ticket[]>;
+  public database = firebase.database();
 
-  ticketNumber = 0;
+  ticketNumber: string;
   studentNumber: string;
   studentName: string;
   roomNumber: string;
   description: string;
+  hostelID: string;
 
   public generateTicket(): void {
+    this.ticketNumber = 'lByO332RjDLvZ0hDnLlj';
+    this.hostelID = 'Hombre';
     this.studentNumber = localStorage.getItem('email').substring(0, 7);
     this.studentName = localStorage.getItem('username');
-    this.roomNumber = '88';
-    this.description = 'Door broken';
-    const newTicket = new Ticket(this.ticketNumber, this.studentNumber, this.studentName, this.roomNumber, this.description);
-    this.ticketNumber++;
-    // this.repairs.push(newTicket);
+    const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID);
+    firebase.database().ref('repairs/' + this.ticketNumber).set({newTicket},
+      function(error) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Write succeeded');
+        }
+      });
   }
 
-  constructor(/*db: AngularFireDatabase*/) {
-    // this.repairs = db.list('/repairs');
+  constructor(private fps: FirebaseService) {
+
   }
 
   ngOnInit() {
