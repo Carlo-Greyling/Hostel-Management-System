@@ -35,7 +35,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
-import {Calendar} from "@fullcalendar/core";
 
 @NgModule({
   declarations: [
@@ -82,7 +81,7 @@ import {Calendar} from "@fullcalendar/core";
     AngularFireAuth,
     FirebaseService,
     NgxQRCodeModule,
-    ZXingScannerModule
+    ZXingScannerModule,
   ],
   bootstrap: [AppComponent],
   entryComponents: [EventDetailsComponent, AddEventComponent]
