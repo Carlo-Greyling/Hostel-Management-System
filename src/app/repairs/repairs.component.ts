@@ -98,8 +98,6 @@ export class RepairsComponent implements OnInit {
     this.studentName = this.studentName.charAt(0).toUpperCase() + this.studentName.substring(1, this.studentName.indexOf(' '))
       + ' ' + this.studentName.charAt(this.studentName.indexOf(' ') + 1).toUpperCase()
       + this.studentName.substring(this.studentName.indexOf(' ') + 2, this.studentName.length);
-    // this.studentName.toUpperCase();
-    console.log(this.studentName);
   }
 
 }
