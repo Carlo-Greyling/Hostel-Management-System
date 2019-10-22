@@ -38,8 +38,8 @@ export class AuthService {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider)
       .then((result) => { // 29685532@student.g.nwu.ac.za
-        if (result.user.email.substring(8, 28) === '@student.g.nwu.ac.za') {
-          console.log('Student Email Valid');
+        /*if (result.user.email.substring(8, 28) === '@student.g.nwu.ac.za') {
+          console.log('Student Email Valid');*/
           this.updateUserData(result.user);
           localStorage.setItem('uid', result.user.uid);
           localStorage.setItem('email', result.user.email);
@@ -60,9 +60,9 @@ export class AuthService {
                 }
               }
             });
-        } else {
+        /*} else {
           console.log('Invalid Student Email');
-        }
+        }*/
         // this.router.navigate(['hc-home/calender']);
       });
   }
