@@ -34,10 +34,7 @@ export class RepairsComponent implements OnInit {
     for (let i = 0; i < 6; i++) {
       this.ticketNumber += this.availableCharacters.charAt(Math.floor(Math.random() * this.availableCharacters.length));
     }
-    // this.ticketNumber = 'lByO332RjDLvZ0hDnLlj';
-    this.hostelID = 'Hombre';
-    this.studentNumber = localStorage.getItem('email').substring(0, 7);
-    this.studentName = localStorage.getItem('username');
+
     const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID);
     firebase.database().ref('repairs/' + this.ticketNumber).set({newTicket},
       function(error) {
@@ -76,12 +73,33 @@ export class RepairsComponent implements OnInit {
     + 'If you wish to provide additional comments or information regarding the query, please reply to this email.';
   }
 
+  sendStudentEmail() {
+
+  }
+
+  sendRepairsEmail() {
+
+  }
+
+  sendEmails() {
+    this.sendStudentEmail();
+    this.sendRepairsEmail();
+  }
+
   constructor(private fps: FirebaseService) {
 
   }
 
   ngOnInit() {
+    this.hostelID = 'Hombre';
+    this.studentNumber = localStorage.getItem('email').substring(0, 7);
     this.studentName = localStorage.getItem('username');
+    this.studentName = localStorage.getItem('username').toLowerCase();
+    this.studentName = this.studentName.charAt(0).toUpperCase() + this.studentName.substring(1, this.studentName.indexOf(' '))
+      + ' ' + this.studentName.charAt(this.studentName.indexOf(' ') + 1).toUpperCase()
+      + this.studentName.substring(this.studentName.indexOf(' ') + 2, this.studentName.length);
+    // this.studentName.toUpperCase();
+    console.log(this.studentName);
   }
 
 }
