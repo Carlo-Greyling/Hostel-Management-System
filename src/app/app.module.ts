@@ -43,8 +43,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
-import { AdminComponent } from './admin/admin.component';
-import { ScoresComponent } from './scores/scores.component';
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -60,8 +59,6 @@ import { ScoresComponent } from './scores/scores.component';
     RepairsComponent,
     EventDetailsComponent,
     AddEventComponent,
-    AdminComponent,
-    ScoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +83,7 @@ import { ScoresComponent } from './scores/scores.component';
     ZXingScannerModule,
     MatDialogModule,
     MatSelectModule,
-    MatTableModule,
+    MatSliderModule,
   ],
   providers: [
     MatDatepickerModule,

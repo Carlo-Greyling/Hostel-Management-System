@@ -10,7 +10,6 @@ import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.compon
 import {ProfileComponent} from './profile/profile.component';
 import { ResidentComponent } from './resident/resident.component';
 import { RepairsComponent } from './repairs/repairs.component';
-import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'hc-home/calender' },
@@ -22,7 +21,6 @@ const routes: Routes = [
       { path: 'qr-scanner', component: QrCodeScannerComponent, canActivate: [CanActivateGuard]},
       { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
-      { path: 'admin', component: AdminComponent,  canActivate: [CanActivateGuard]},
     ], canActivate: [CanActivateGuard]},
   { path: 'residents-home', component: ResidentComponent, children: [
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
