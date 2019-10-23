@@ -4,7 +4,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HcHomeComponent } from './hc-home/hc-home.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -35,6 +43,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
+import { AdminComponent } from './admin/admin.component';
+import { ScoresComponent } from './scores/scores.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +60,8 @@ import { AddEventComponent } from './add-event/add-event.component';
     RepairsComponent,
     EventDetailsComponent,
     AddEventComponent,
+    AdminComponent,
+    ScoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +85,8 @@ import { AddEventComponent } from './add-event/add-event.component';
     NgxQRCodeModule,
     ZXingScannerModule,
     MatDialogModule,
+    MatSelectModule,
+    MatTableModule,
   ],
   providers: [
     MatDatepickerModule,
