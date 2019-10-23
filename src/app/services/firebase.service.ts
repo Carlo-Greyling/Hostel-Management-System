@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {User} from '../models/user.model';
 import {CalendarEvent} from "../models/calendarevent.model";
+import {Ticket} from './ticket.model';
 
 @Injectable()
 export class FirebaseService {
@@ -192,6 +193,24 @@ export class FirebaseService {
           localStorage.setItem('userType', this.userType);
           localStorage.setItem('hostelId', doc.data().hostelId);
         }
+      });
+  }
+
+  newRepairTicket(ticketNumber, newTicket: Ticket) {
+    const ref = this.db.collection('hostels').doc(ticketNumber);
+    const getDoc = ref.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          const data = {
+            newTicket
+          };
+
+          ref.set(data);
+        } else {
+          console.log('Ticket Exists');
+        }
+      }).catch(err => {
+        console.log('Error', err); // add toastr notification
       });
   }
 }
