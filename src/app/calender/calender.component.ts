@@ -30,12 +30,12 @@ export class CalenderComponent implements OnInit, OnDestroy {
   ];*/
 
   constructor(private dialog: MatDialog, private fbs: FirebaseService) {
-    this.events.length = 0;
-    this.events = [];
-    this.events = this.fbs.getEvents();
   }
 
   ngOnInit() {
+    this.events.length = 0;
+    this.events = [];
+    this.events = this.fbs.getEvents();
   }
 
   ngOnDestroy(): void {
