@@ -11,6 +11,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($app-theme);
 
 .custom-dialog-container .mat-dialog-container {
-  padding: 0px !important;
+  padding: 8px !important;
   width: 550px;
 }

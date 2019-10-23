@@ -25,7 +25,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseService} from './services/firebase.service';
 import { ResidentComponent } from './resident/resident.component';
-
+import {Calendar} from '@fullcalendar/core';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
@@ -81,7 +81,7 @@ import { AddEventComponent } from './add-event/add-event.component';
     AngularFireAuth,
     FirebaseService,
     NgxQRCodeModule,
-    ZXingScannerModule,
+    ZXingScannerModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [EventDetailsComponent, AddEventComponent]
