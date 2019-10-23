@@ -10,7 +10,6 @@
     <textarea matInput disabled placeholder="{{ description }}"></textarea>
   </mat-form-field>
   <button
-    *ngIf="userIsHc === true"
     mat-raised-button
     style="width: 100%; margin-bottom: 8px;"
     (click)="onAddEventClicked()"

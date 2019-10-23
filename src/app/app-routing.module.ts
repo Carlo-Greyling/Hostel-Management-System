@@ -13,6 +13,7 @@ import { RepairsComponent } from './repairs/repairs.component';
 import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'hc-home/calender' },
   { path: 'login', component: LoginSignupComponent },
   { path: 'hc-home', component: HcHomeComponent, children: [
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
