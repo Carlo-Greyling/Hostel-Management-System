@@ -16,10 +16,14 @@ export class EventDetailsComponent implements OnInit {
   title = '';
   description = '';
   userType = '';
+  userIsHc: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, private dialog: MatDialog) { }
 
   ngOnInit() {
+    /*if (localStorage.getItem('userType') === 'hc') {
+      this.userIsHc = true;
+    }*/
     this.eventdate = this.data.date;
     this.events = this.data.eventsArr;
 
