@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {User} from '../models/user.model';
-import {CalendarEvent} from "../models/calendarevent.model";
+import {CalendarEvent} from '../models/calendarevent.model';
 import {Ticket} from './ticket.model';
 
 @Injectable()
@@ -201,7 +201,7 @@ export class FirebaseService {
   }
 
   newRepairTicket(ticketNumber, newTicket: Ticket) {
-    const ref = this.db.collection('hostels').doc(ticketNumber);
+    const ref = this.db.collection('repairs').doc(ticketNumber);
     const getDoc = ref.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
