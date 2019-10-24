@@ -44,6 +44,9 @@ import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import {MatSliderModule} from "@angular/material/slider";
+import { HcVoteComponent } from './hc-vote/hc-vote.component';
+import {MatSortModule} from '@angular/material/sort';
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component'; 
 
 @NgModule({
   declarations: [
@@ -59,6 +62,8 @@ import {MatSliderModule} from "@angular/material/slider";
     RepairsComponent,
     EventDetailsComponent,
     AddEventComponent,
+    HcVoteComponent,
+    CandidateVoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +89,8 @@ import {MatSliderModule} from "@angular/material/slider";
     MatDialogModule,
     MatSelectModule,
     MatSliderModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [
     MatDatepickerModule,
