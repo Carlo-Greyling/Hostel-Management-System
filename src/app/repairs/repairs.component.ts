@@ -14,25 +14,30 @@ import {FirebaseDatabase, FirebaseFirestore} from '@angular/fire';
 export class RepairsComponent implements OnInit {
   public database = firebase.database();
 
-  availableCharacters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   studentEmail = localStorage.getItem('email');
-  ticketNumber: string;
+  ticketNumber = '';
   studentNumber: string;
   studentName: string;
   roomNumber: string;
   description: string;
   hostelID: string;
 
-  repairsGeneratedEmail: string;
+  public repairsGeneratedEmail: string;
   studentGeneratedEmail: string;
 
-  emailHeader = 'Repairs Query Opened [#';
+  emailHeader;
 
-
+  public generateEmails() {
+    this.generateTicket();
+    this.generateHeader();
+    this.generateEmailRepairs();
+    this.generateEmailStudent();
+  }
 
   public generateTicket(): void {
-    for (let i = 0; i < 6; i++) {
-      this.ticketNumber += this.availableCharacters.charAt(Math.floor(Math.random() * this.availableCharacters.length));
+    for (let i = 0; i < 8; i++) {
+      this.ticketNumber += this.characters.charAt(Math.floor(Math.random() * this.characters.length));
     }
 
     const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID);
@@ -47,6 +52,7 @@ export class RepairsComponent implements OnInit {
   }
 
   public  generateHeader() {
+    this.emailHeader = 'Repairs Query Opened [#';
     this.emailHeader += this.ticketNumber + ']';
   }
 
@@ -65,9 +71,9 @@ export class RepairsComponent implements OnInit {
 
   public generateEmailStudent() {
     this.studentGeneratedEmail =
-      'Dear' + this.studentName + '\n' +
-      'Your sales query ' + this.ticketNumber + ' has been created.\n' +
-      'One of our sales representative should be getting back to you within 1 business days.'
+      'Dear ' + this.studentName + '\n' +
+      'Your repairs query [#' + this.ticketNumber + '] has been created.\n' +
+      'One of our repairs representatives should be getting back to you within 1 business days.'
     + '\n'
     + '\n'
     + 'If you wish to provide additional comments or information regarding the query, please reply to this email.';

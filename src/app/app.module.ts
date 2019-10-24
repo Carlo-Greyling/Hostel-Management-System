@@ -35,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
+import { RepairsListComponent } from './repairs-list/repairs-list.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AddEventComponent } from './add-event/add-event.component';
     RepairsComponent,
     EventDetailsComponent,
     AddEventComponent,
+    RepairsListComponent,
   ],
   imports: [
     BrowserModule,
