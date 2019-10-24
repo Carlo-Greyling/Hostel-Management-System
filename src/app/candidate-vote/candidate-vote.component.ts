@@ -42,7 +42,6 @@ export class CandidateVoteComponent implements OnInit {
     {name: 'Peter Griffin'}
   ]
 
-  // listOfCandidates = ['Keanu Reeves', 'Jane Bolton', 'Mike Izzumi', 'Lil Uzi Vert', 'Kentucky Pete', 'Peter Griffin'];
 
   constructor() { }
 
