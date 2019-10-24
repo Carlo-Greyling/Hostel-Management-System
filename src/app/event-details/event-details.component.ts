@@ -32,7 +32,10 @@ export class EventDetailsComponent implements OnInit {
 
     this.title = this.events[this.selectedEventIndex].title;
     this.description = this.events[this.selectedEventIndex].description;
-
+    if (this.title === '' || this.title === null) {
+      this.title = 'There is no event set for this day.';
+      this.description = 'There is no event set for this day.';
+    }
     this.userType = localStorage.getItem('userType');
   }
 

@@ -83,13 +83,26 @@ export class AuthService {
 
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
-    const data = {
-      displayName: user.displayName,
-    email: user.email,
-    photoURL: user.photoURL,
-    uid: user.uid
-    };
-    localStorage.setItem('uid', user.uid);
-    return userRef.set(data, { merge: true });
+    const getDoc = userRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('Error');
+        } else {
+          const data = {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            uid: user.uid,
+            BASE64PP: doc.data().BASE64PP,
+            eventsPart: doc.data().eventsPart,
+            hostelId: doc.data().hostelId,
+            userType: doc.data().userType
+          };
+          localStorage.setItem('uid', user.uid);
+          userRef.set(data, { merge: true });
+        }
+      }).catch(err => {
+        console.log('Error', err); // add toastr notification
+      });
   }
 }
