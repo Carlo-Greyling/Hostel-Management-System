@@ -11,6 +11,7 @@ import {ProfileComponent} from './profile/profile.component';
 import { ResidentComponent } from './resident/resident.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import {AdminComponent} from './admin/admin.component';
+import {ScoresComponent} from './scores/scores.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'hc-home/calender' },
@@ -23,12 +24,14 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
       { path: 'admin', component: AdminComponent,  canActivate: [CanActivateGuard]},
+      { path: 'scores', component: ScoresComponent,  canActivate: [CanActivateGuard]}
     ], canActivate: [CanActivateGuard]},
   { path: 'residents-home', component: ResidentComponent, children: [
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
       { path: 'qr-code', component: QRCodeGeneratorComponent, canActivate: [CanActivateGuard]},
       { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
+      { path: 'scores', component: ScoresComponent,  canActivate: [CanActivateGuard]}
     ] }
 ];
 
