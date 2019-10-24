@@ -5,12 +5,14 @@ export class Ticket {
   public roomNumber: string;
   public description: string;
   public hostelID: string;
+  public repairsEmail: string;
 
-  constructor(studentNumber: string, studentName: string, roomNumber: string, description: string, hostelID: string) {
+  constructor(studentNumber: string, studentName: string, roomNumber: string, description: string, hostelID: string, repairsEmail: string) {
     this.studentNumber = studentNumber;
     this.studentName = studentName;
     this.roomNumber = roomNumber;
     this.description = description;
     this.hostelID = hostelID;
+    this.repairsEmail = repairsEmail;
   }
 }

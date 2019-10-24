@@ -33,6 +33,7 @@ export class RepairsComponent implements OnInit {
     this.generateHeader();
     this.generateEmailRepairs();
     this.generateEmailStudent();
+    this.setNewTicket();
   }
 
   public generateTicket(): void {
@@ -40,16 +41,14 @@ export class RepairsComponent implements OnInit {
       this.ticketNumber += this.characters.charAt(Math.floor(Math.random() * this.characters.length));
     }
 
-    const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID);
-    /*this.fps.newRepairTicket(this.ticketNumber, newTicket);*/ // TODO: Use this code
-    firebase.database().ref('repairs/' + this.ticketNumber).set({newTicket},
+    /*firebase.database().ref('repairs/' + this.ticketNumber).set({newTicket},
       function(error) {
         if (error) {
           console.log(error);
         } else {
           console.log('Write succeeded');
         }
-      });
+      });*/
   }
 
   public  generateHeader() {
@@ -59,14 +58,14 @@ export class RepairsComponent implements OnInit {
 
   public generateEmailRepairs() {
     this.repairsGeneratedEmail =
-      'New Repairs Ticket ' + this.ticketNumber + ' Generated, Details As Follows: \n' +
+      'New Repairs Ticket ' + this.ticketNumber + ' Generated, Details As Follows: ' +
       'Hostel: ' + this.hostelID +
       'Room Number: ' + this.roomNumber +
-      '\n' +
+
       'Student Number: ' + this.studentNumber +
       'Student Name: ' + this.studentNumber +
       'Student Email: ' + this.studentEmail +
-      '\n' +
+
       'Description: ' + this.description;
   }
 
@@ -78,6 +77,11 @@ export class RepairsComponent implements OnInit {
     + '\n'
     + '\n'
     + 'If you wish to provide additional comments or information regarding the query, please reply to this email.';
+  }
+
+  public setNewTicket() {
+    const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID, this.repairsGeneratedEmail);
+    this.fps.newRepairTicket(this.ticketNumber, newTicket);
   }
 
   sendStudentEmail() {
