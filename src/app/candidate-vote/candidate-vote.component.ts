@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EligableCandidates } from '../models/candidate.model';
 
 export interface Under_Prims {
   name : string;
@@ -20,6 +21,8 @@ export interface HCCandidates {
 })
 export class CandidateVoteComponent implements OnInit {
 
+  newCandidate : string;
+
   underPrims: Under_Prims[] = [
     {name: 'Johannes van Rensburg'},
     {name: 'Piet Appelkoos'},
@@ -32,7 +35,7 @@ export class CandidateVoteComponent implements OnInit {
     {name: 'Eye of Misery'}
   ];
 
-  listOfCandidates: HCCandidates[] = [
+  /*listOfCandidates: HCCandidates[] = [
     {name: 'Piet Pompies'},
     {name: 'Keanu Reeves'},
     {name: 'Jane Bolton'},
@@ -40,8 +43,31 @@ export class CandidateVoteComponent implements OnInit {
     {name: 'Lil Uzi Vert'},
     {name: 'Kentucky Pete'},
     {name: 'Peter Griffin'}
-  ]
+  ]*/
 
+  listOfCandidates: EligableCandidates[] = [
+    {name: 'Piet Pompies'},
+    {name: 'Keanu Reeves'},
+    {name: 'Jane Bolton'},
+    {name: 'Mike Izzumi'},
+    {name: 'Lil Uzi Vert'},
+    {name: 'Kentucky Pete'},
+    {name: 'Peter Griffin'}
+  ];
+
+  onAddCandidate() {
+      this.listOfCandidates.push(new EligableCandidates(this.newCandidate));
+  }
+
+  onRemoveCandidate() {
+    var index = this.listOfCandidates.length-1;
+    this.listOfCandidates.splice(index, 1);
+   
+  }
+
+  onSubmitVote() {
+    
+  }
 
   constructor() { }
 
