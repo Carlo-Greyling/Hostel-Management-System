@@ -1,0 +1,57 @@
+<mat-card style="padding-left: 2em; padding-right: 2em; padding-top: 2em; padding-bottom: 2em;"> 
+        <h1>Choose your candidates</h1>
+        <!-- Selection List that gets names from the Prims array -->
+        <div>
+            <mat-form-field>
+                <mat-label>Prim</mat-label>
+                <mat-select>
+                <mat-option *ngFor="let candidates of Prims" [value]="candidates.name">
+                    {{candidates.name}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>  
+
+        <!-- Selection List that gets names from the underPrims array -->
+        <div>
+            <mat-form-field>
+                <mat-label>Under-Prim</mat-label>
+                <mat-select>
+                <mat-option *ngFor="let candidates of underPrims" [value]="candidates.name">
+                    {{candidates.name}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>  
+    
+        <mat-divider></mat-divider>
+    
+        <!-- Lists of candidates standing for House Comittee; gets data from listofCandidates array -->
+        <h1 style="padding-top: 1em;">Choose candidates you think are eligable for House-Committee</h1>
+        <mat-selection-list #selections>
+            <mat-list-option *ngFor="let candidates of listOfCandidates">
+                  {{candidates.name}}
+            </mat-list-option>
+        </mat-selection-list>
+            
+            <!-- This block will run if the number of items selected is smaller than 6 -->
+            <div *ngIf="selections.selectedOptions.selected.length > 5; else elseBlock">
+                <p style="color: red;"><b>Please choose less than 6 candidates</b></p>
+                <div>
+                    <button mat-raised-button disabled>Submit</button>
+                </div>
+            </div>
+            <!-- This block will run if more than 5 candidates are voted for -->
+            <div>
+                <ng-template #elseBlock>
+                    Candidates selected: {{selections.selectedOptions.selected.length}}
+                    <div>
+                        <button mat-raised-button style="background-color: indigo; color: white;">Submit</button>
+                    </div>
+                </ng-template>
+            </div>
+    </mat-card>
+    
+
+
+

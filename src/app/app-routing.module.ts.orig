@@ -4,29 +4,44 @@ import { LoginSignupComponent } from './login-signup/login-signup.component';
 import {HcHomeComponent} from './hc-home/hc-home.component';
 import {CalenderComponent} from './calender/calender.component';
 import {AttendanceComponent} from './attendance/attendance.component';
-<<<<<<< HEAD
+import {CanActivateGuard} from './services/can-activate.guard';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
+import {ProfileComponent} from './profile/profile.component';
+import { ResidentComponent } from './resident/resident.component';
+import { RepairsComponent } from './repairs/repairs.component';
+<<<<<<< HEAD
+import {RepairsListComponent} from './repairs-list/repairs-list.component';
 =======
-import {CanActivateGuard} from './services/can-activate.guard';
-
->>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
+import { HcVoteComponent } from './hc-vote/hc-vote.component';
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component';
+>>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'hc-home' },
+  { path: '', pathMatch: 'full', redirectTo: 'hc-home/calender' },
   { path: 'login', component: LoginSignupComponent },
   { path: 'hc-home', component: HcHomeComponent, children: [
-<<<<<<< HEAD
-      { path: 'calender', component: CalenderComponent },
-      { path: 'attendance', component: AttendanceComponent }
-    ]},
-  { path: 'qr-code', component: QRCodeGeneratorComponent },
-  { path: 'qr-scanner', component: QrCodeScannerComponent },
-=======
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
-      { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard]}
-    ], canActivate: [CanActivateGuard]}
->>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
+      { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard]},
+      { path: 'qr-code', component: QRCodeGeneratorComponent, canActivate: [CanActivateGuard]},
+      { path: 'qr-scanner', component: QrCodeScannerComponent, canActivate: [CanActivateGuard]},
+      { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
+      { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
+<<<<<<< HEAD
+      { path: 'repairs-list', component: RepairsListComponent, canActivate: [CanActivateGuard] },
+=======
+      { path: 'hc-vote', component: HcVoteComponent, canActivate: [CanActivateGuard]},
+      { path: 'candidate-vote', component: CandidateVoteComponent, canActivate: [CanActivateGuard]},
+>>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
+    ], canActivate: [CanActivateGuard]},
+  { path: 'residents-home', component: ResidentComponent, children: [
+      { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
+      { path: 'qr-code', component: QRCodeGeneratorComponent, canActivate: [CanActivateGuard]},
+      { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
+      { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
+      { path: 'hc-vote', component: HcVoteComponent, canActivate: [CanActivateGuard]},
+      { path: 'candidate-vote', component: CandidateVoteComponent, canActivate: [CanActivateGuard]},
+    ] }
 ];
 
 @NgModule({

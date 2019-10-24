@@ -41,6 +41,7 @@ export class RepairsComponent implements OnInit {
     }
 
     const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID);
+    /*this.fps.newRepairTicket(this.ticketNumber, newTicket);*/ // TODO: Use this code
     firebase.database().ref('repairs/' + this.ticketNumber).set({newTicket},
       function(error) {
         if (error) {

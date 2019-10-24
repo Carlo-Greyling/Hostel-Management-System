@@ -4,7 +4,7 @@ export class Ticket {
   public studentName: string;
   public roomNumber: string;
   public description: string;
-  public hostelID
+  public hostelID: string;
 
   constructor(studentNumber: string, studentName: string, roomNumber: string, description: string, hostelID: string) {
     this.studentNumber = studentNumber;

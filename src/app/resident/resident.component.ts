@@ -26,7 +26,7 @@ export class ResidentComponent implements OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
-
+    this.fbs.getUserType(localStorage.getItem('uid'));
     this.loggedInUsername = localStorage.getItem('username');
     this.studentEmail = localStorage.getItem('email');
     this.profilePictureUrl = localStorage.getItem('picurl');

@@ -1,0 +1,111 @@
+<div>
+  <div class="selectOption">
+    <mat-form-field class="selectOption">
+      <mat-label>Please Select Option</mat-label>
+      <mat-select [(ngModel)]="selectedNav">
+        <mat-option *ngFor="let option of options" [value]="option.optionId">
+          {{option.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <hr>
+  <div style="margin: 8px; justify-content: center; align-items: center; text-align: center;" *ngIf="selectedNav === '0'">
+    <h3 style="color: #673ab7;">SCC: Finances - Social Event Report Submission</h3>
+    <mat-form-field style="width: 60%;">
+      <input #eventReport matInput placeholder="Event Report">
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+    <input matInput [matDatepicker]="picker" placeholder="Choose A Date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #purposeOfEvent matInput placeholder="Purpose Of The Event">
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <textarea #preparation matInput placeholder="Preparation"></textarea>
+    </mat-form-field>
+    <hr style="width: 60%;">
+    <mat-form-field style="width: 60%;">
+      <input #taskTF matInput placeholder="Task">
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #startDateTF matInput [matDatepicker]="pickerStartDate" placeholder="Start Date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStartDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #endDateTF matInput [matDatepicker]="pickerEndDate" placeholder="End Date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEndDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <button style="width: 60%; background: #673ab7; color: white; margin-bottom: 8px;" mat-raised-button (click)="AddToTimeFrame(taskTF.value, startDateTF.value, endDateTF.value, table)">Add To Table</button>
+    <div style="width: 60%; margin: 0 auto;">
+      <table #table  mat-table [dataSource]="dataSource" style="width: 100%;">
+        <!-- Task Column -->
+        <ng-container matColumnDef="task">
+          <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Task </th>
+          <td mat-cell *matCellDef="let row"> {{row.task}} </td>
+        </ng-container>
+        <!-- Start Date Column -->
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Start date </th>
+          <td mat-cell *matCellDef="let row"> {{row.startingDate}} </td>
+        </ng-container>
+        <!-- End date Column -->
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell style="text-align: center;" *matHeaderCellDef> End Date </th>
+          <td mat-cell *matCellDef="let row"> {{row.endDate}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <hr style="width: 60%;">
+    <!--COSTS-->
+    <mat-form-field style="width: 60%;">
+      <input #itemName matInput placeholder="Item">
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #cost matInput placeholder="Cost">
+    </mat-form-field>
+    <button style="width: 60%; background: #673ab7; color: white; margin-bottom: 8px;" mat-raised-button (click)="AddToCosts(itemName.value, cost.value, table2)">Add To Table</button>
+    <div style="width: 60%; margin: 0 auto;">
+      <table #table2  mat-table [dataSource]="dataSource2" style="width: 100%;">
+        <!-- Item Column -->
+        <ng-container matColumnDef="item">
+          <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Item </th>
+          <td mat-cell *matCellDef="let row"> {{row.item}} </td>
+        </ng-container>
+        <!-- Cost Date Column -->
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let row"> {{row.cost}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table>
+    </div>
+    <hr style="width: 60%;">
+    <mat-form-field style="width: 60%;">
+      <textarea #obstacles matInput placeholder="Obstacles"></textarea>
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <textarea #overallComments matInput placeholder="Overall Comentary"></textarea>
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <textarea #futureOfEvent matInput placeholder="Future Of Event"></textarea>
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #name matInput placeholder="Name">
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #residence matInput placeholder="Residence">
+    </mat-form-field>
+    <mat-form-field style="width: 60%;">
+      <input #contact matInput placeholder="Contact Number">
+    </mat-form-field>
+    <button mat-raised-button style="background-color: #673ab7; color: white; width: 60%;" (click)="SubmitReport()">Submit Report To SCC: Finances</button>
+  </div>
+</div>

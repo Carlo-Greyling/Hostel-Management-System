@@ -10,6 +10,8 @@ import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.compon
 import {ProfileComponent} from './profile/profile.component';
 import { ResidentComponent } from './resident/resident.component';
 import { RepairsComponent } from './repairs/repairs.component';
+import { HcVoteComponent } from './hc-vote/hc-vote.component';
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component';
 import {RepairsListComponent} from './repairs-list/repairs-list.component';
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
       { path: 'qr-scanner', component: QrCodeScannerComponent, canActivate: [CanActivateGuard]},
       { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
+      { path: 'hc-vote', component: HcVoteComponent, canActivate: [CanActivateGuard]},
+      { path: 'candidate-vote', component: CandidateVoteComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs-list', component: RepairsListComponent, canActivate: [CanActivateGuard] },
     ], canActivate: [CanActivateGuard]},
   { path: 'residents-home', component: ResidentComponent, children: [
@@ -29,6 +33,8 @@ const routes: Routes = [
       { path: 'qr-code', component: QRCodeGeneratorComponent, canActivate: [CanActivateGuard]},
       { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
+      { path: 'hc-vote', component: HcVoteComponent, canActivate: [CanActivateGuard]},
+      { path: 'candidate-vote', component: CandidateVoteComponent, canActivate: [CanActivateGuard]},
     ] }
 ];
 

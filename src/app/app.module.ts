@@ -4,7 +4,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HcHomeComponent } from './hc-home/hc-home.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -25,7 +33,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseService} from './services/firebase.service';
 import { ResidentComponent } from './resident/resident.component';
-
+import {Calendar} from '@fullcalendar/core';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
@@ -35,6 +43,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
+import {MatSliderModule} from "@angular/material/slider";
+import { HcVoteComponent } from './hc-vote/hc-vote.component';
+import {MatSortModule} from '@angular/material/sort';
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component'; 
 import { RepairsListComponent } from './repairs-list/repairs-list.component';
 
 @NgModule({
@@ -51,6 +63,8 @@ import { RepairsListComponent } from './repairs-list/repairs-list.component';
     RepairsComponent,
     EventDetailsComponent,
     AddEventComponent,
+    HcVoteComponent,
+    CandidateVoteComponent,
     RepairsListComponent,
   ],
   imports: [
@@ -75,6 +89,10 @@ import { RepairsListComponent } from './repairs-list/repairs-list.component';
     NgxQRCodeModule,
     ZXingScannerModule,
     MatDialogModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [
     MatDatepickerModule,
@@ -83,7 +101,7 @@ import { RepairsListComponent } from './repairs-list/repairs-list.component';
     AngularFireAuth,
     FirebaseService,
     NgxQRCodeModule,
-    ZXingScannerModule,
+    ZXingScannerModule
   ],
   bootstrap: [AppComponent],
   entryComponents: [EventDetailsComponent, AddEventComponent]
