@@ -16,11 +16,18 @@
     <h1>Scan Results</h1>
 
     <img src=" {{ studentImage }} ">
-
     <h5 id="studentNumber">{{ studentNumber }}</h5>
-
-    <label for="nameSurname"><b>Student Names</b></label>
+    <label for="nameSurname"><b>Student Name</b></label>
     <p id="nameSurname">{{ studentName }}</p>
+
+    <mat-form-field>
+      <mat-label>Choose Event</mat-label>
+      <mat-select>
+        <mat-option (click)="setEID(local.eventID)"  *ngFor="let local of localArray" [value]="local.eventID">
+          {{local.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <button type="submit" class="btn" (click)="validate(qrResultString)">Update</button>
     <button type="submit" class="btn cancel" (click)="closeForm()">Close</button>

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {User} from '../models/user.model';
 import {CalendarEvent} from "../models/calendarevent.model";
 import {Ticket} from './ticket.model';
@@ -37,6 +37,7 @@ export class FirebaseService {
     let dateArr: string[] = [];
     let descArr: string[] = [];
     let titleArr: string[] = [];
+    let idArr: number[] = [];
 
     const ref = this.db.collection('hostels').doc(localStorage.getItem('hostelId'));
     const getDoc = ref.get().toPromise()
@@ -47,15 +48,18 @@ export class FirebaseService {
           dateArr = doc.data().date;
           descArr = doc.data().description;
           titleArr = doc.data().title;
+          idArr = doc.data().eventID;
 
           dateArr.push(date);
           descArr.push(description);
           titleArr.push(title);
+          idArr.push(idArr.length + 1);
 
           const data = {
             date: dateArr,
             description: descArr,
-            title: titleArr
+            title: titleArr,
+            eventID: idArr
           };
 
           ref.set(data);
@@ -81,7 +85,7 @@ export class FirebaseService {
           descArr = doc.data().description;
           titleArr = doc.data().title;
           for (let i = 0; i < dateArr.length; i++) {
-            this.events.push(new CalendarEvent(titleArr[i], dateArr[i], descArr[i]));
+            this.events.push(new CalendarEvent(titleArr[i], dateArr[i], descArr[i], i));
           }
         }
       }).catch(err => {
@@ -150,7 +154,7 @@ export class FirebaseService {
         if (!doc.exists) {
           console.log('GetProfileData-fbs: Profile not found!');
         } else {
-          this.profilePictureUrl = doc.data().photoURL;
+          this.profilePictureUrl = doc.data().BASE64PP;
         }
       });
     return this.profilePictureUrl;
@@ -208,6 +212,26 @@ export class FirebaseService {
           ref.set(data);
         } else {
           console.log('Ticket Exists');
+        }
+      }).catch(err => {
+        console.log('Error', err); // add toastr notification
+      });
+  }
+
+  AttendanceRegister(uid, eventId) {
+    let arr: string[] = [];
+    const userRef = this.db.collection('users').doc(uid);
+    const getDoc = userRef.get().toPromise()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('Error');
+        } else {
+          arr = doc.data().eventsPart;
+          arr.push(eventId);
+          const data = {
+            eventsPart: arr
+        };
+          userRef.set(data, { merge: true });
         }
       }).catch(err => {
         console.log('Error', err); // add toastr notification

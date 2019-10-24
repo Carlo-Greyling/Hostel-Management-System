@@ -26,7 +26,7 @@ export class AddEventComponent implements OnInit {
 
   onAddEventClicked(title, desc) {
     console.log(this.hostelId);
-    this.events.push(new CalendarEvent(title, this.selectedDate, desc));
+    this.events.push(new CalendarEvent(title, this.selectedDate, desc, this.events.length + 1));
     this.fbs.Addevent(this.hostelId, this.selectedDate, title, desc);
     const dialogRef = this.dialog.closeAll();
   }

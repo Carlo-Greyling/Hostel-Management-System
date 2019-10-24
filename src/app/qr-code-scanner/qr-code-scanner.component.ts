@@ -3,6 +3,7 @@ import { BarcodeFormat } from '@zxing/library';
 import {BehaviorSubject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {FirebaseService} from '../services/firebase.service';
+import {CalendarEvent} from "../models/calendarevent.model";
 
 @Component({
   selector: 'app-qr-code-scanner',
@@ -34,8 +35,27 @@ export class QrCodeScannerComponent implements OnInit {
     BarcodeFormat.EAN_13,*/
     BarcodeFormat.QR_CODE,
   ];
+  localArray: CalendarEvent[] = [];
+  private eventId: any;
 
-  constructor(private readonly _dialog: MatDialog, private fps: FirebaseService) { }
+  constructor(private readonly _dialog: MatDialog, private fps: FirebaseService) {
+    const array = this.fps.getEvents();
+    this.localArray = array; // TODO: this line assigns firebase array to local array, if code below fixed, remove this line!!!!!
+
+    // TODO: Filter by date but not working
+    /*const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+
+    const myDate = yyyy + '-' + mm + '-' + dd;
+    console.log(myDate);
+    array.forEach((object) => {
+      if (object.date === myDate) {
+        this.localArray.push(object);
+      }
+    });*/
+  }
 
   clearResult() {
     this.qrResultString = null;
@@ -49,15 +69,17 @@ export class QrCodeScannerComponent implements OnInit {
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
     // this.playAudio();
-    this.openForm(resultString);
     this.userID = this.fps.getUidWithStudentNum(resultString);
     this.studentImage = this.fps.getProfilePicURLWithPar(this.userID);
     this.studentNumber = resultString;
     this.studentName = this.fps.getLoggedInUsernameWithPar(this.userID);
+
+    this.openForm(resultString);
   }
 
   validate(resultString: string) {
-    this.validAttendance.push(resultString);
+    // this.validAttendance.push(resultString); Commented this original line out
+    this.fps.AttendanceRegister(this.userID, this.eventId);
   }
 
   updateDatabase() {
@@ -123,7 +145,7 @@ export class QrCodeScannerComponent implements OnInit {
   }*/
 
   ngOnInit() {
-      this.qrResultString = null;
+      this.qrResultString = '';
     // tslint:disable-next-line:max-line-length
       /*this.studentImage = 'https://scontent-jnb1-1.xx.fbcdn.net/v/t1.0-9/33961022_890902067768346_5437623309078364160_n.jpg?_nc_cat=104&_nc_oc=AQm1LG8Rvyj6GmK7CRQnP4bqOqgDOs-Yt2TfwZH5n9CKpB4sWfyx7_AIxqMTvRtYTKo&_nc_ht=scontent-jnb1-1.xx&oh=b848f48955c1d85f04fbeb71feb6923e&oe=5DEF4FED';
       this.studentName = 'Carlo';
@@ -131,4 +153,7 @@ export class QrCodeScannerComponent implements OnInit {
       this.studentNumber = 29685532;*/
   }
 
+  setEID(eid) {
+    this.eventId = eid;
+  }
 }
