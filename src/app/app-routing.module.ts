@@ -12,6 +12,7 @@ import { ResidentComponent } from './resident/resident.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { HcVoteComponent } from './hc-vote/hc-vote.component';
 import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component';
+import {RepairsListComponent} from './repairs-list/repairs-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'hc-home/calender' },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},
       { path: 'hc-vote', component: HcVoteComponent, canActivate: [CanActivateGuard]},
       { path: 'candidate-vote', component: CandidateVoteComponent, canActivate: [CanActivateGuard]},
+      { path: 'repairs-list', component: RepairsListComponent, canActivate: [CanActivateGuard] },
     ], canActivate: [CanActivateGuard]},
   { path: 'residents-home', component: ResidentComponent, children: [
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},

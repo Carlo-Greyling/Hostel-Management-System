@@ -10,6 +10,19 @@
     <mat-form-field style="position: relative; width: 60%; padding: 5px; max-height: 50%">
       <textarea id="desc" [(ngModel)]="description" cdkTextareaAutosize cdkAutosizeMaxRows="10" matInput placeholder="Description"></textarea>
     </mat-form-field>
-    <button mat-raised-button color="primary" style="width: 60%;" type="submit" (click)="generateTicket()">Submit Request</button>
+    <button mat-raised-button color="primary" style="width: 60%;" type="submit" (click)="generateEmails()">Submit Request</button>
   </div>
+</mat-card>
+
+<mat-card>
+  <mat-card style="border-color: black; border-bottom: 1px solid">
+    <h4>
+      {{ emailHeader }}
+    </h4>
+  </mat-card>
+  <mat-card>
+    <p>
+      {{ studentGeneratedEmail }}
+    </p>
+  </mat-card>
 </mat-card>

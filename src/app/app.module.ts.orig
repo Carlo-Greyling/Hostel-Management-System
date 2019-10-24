@@ -1,15 +1,18 @@
-<<<<<<< HEAD
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-=======
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
 import {InjectionToken, NgModule} from '@angular/core';
->>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatTableModule
+} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HcHomeComponent } from './hc-home/hc-home.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,25 +24,33 @@ import { AvatarModule } from 'ngx-avatar';
 import { CalenderComponent } from './calender/calender.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-<<<<<<< HEAD
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {AuthService} from './services/auth.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {FirebaseService} from './services/firebase.service';
+import { ResidentComponent } from './resident/resident.component';
+import {Calendar} from '@fullcalendar/core';
 import { QRCodeGeneratorComponent } from './qr-code-generator/qr-code-generator.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { hammerjsVersion } from '@angular/material/schematics/ng-add/version-names';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ProfileComponent } from './profile/profile.component';
+import { RepairsComponent } from './repairs/repairs.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { AddEventComponent } from './add-event/add-event.component';
+<<<<<<< HEAD
+import { RepairsListComponent } from './repairs-list/repairs-list.component';
 =======
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
-import {AuthService} from "./services/auth.service";
-import {AngularFirestore} from "@angular/fire/firestore";
-import {AngularFireModule} from "@angular/fire";
-import {environment} from "../environments/environment";
-import {AngularFireAuth} from "@angular/fire/auth";
-import {FirebaseService} from "./services/firebase.service";
-import { ResidentComponent } from './resident/resident.component';
->>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
+import {MatSliderModule} from "@angular/material/slider";
+import { HcVoteComponent } from './hc-vote/hc-vote.component';
+import {MatSortModule} from '@angular/material/sort';
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component'; 
+>>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
 
 @NgModule({
   declarations: [
@@ -48,14 +59,19 @@ import { ResidentComponent } from './resident/resident.component';
     HcHomeComponent,
     CalenderComponent,
     AttendanceComponent,
-<<<<<<< HEAD
+    ResidentComponent,
     QRCodeGeneratorComponent,
     QrCodeScannerComponent,
-    // ZXingScannerComponent,
-    // ZXingScannerDemoComponent,
+    ProfileComponent,
+    RepairsComponent,
+    EventDetailsComponent,
+    AddEventComponent,
+<<<<<<< HEAD
+    RepairsListComponent,
 =======
-    ResidentComponent
->>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
+    HcVoteComponent,
+    CandidateVoteComponent,
+>>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
   ],
   imports: [
     BrowserModule,
@@ -75,21 +91,26 @@ import { ResidentComponent } from './resident/resident.component';
     FullCalendarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-<<<<<<< HEAD
+    AngularFireModule.initializeApp(environment.firebase),
     NgxQRCodeModule,
     ZXingScannerModule,
-=======
-    AngularFireModule.initializeApp(environment.firebase),
+    MatDialogModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [
     MatDatepickerModule,
     AuthService,
     AngularFirestore,
     AngularFireAuth,
-    FirebaseService
->>>>>>> e9abb929dca4590e07df6d938ec6632e1a890aa3
+    FirebaseService,
+    NgxQRCodeModule,
+    ZXingScannerModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EventDetailsComponent, AddEventComponent]
 })
 export class AppModule {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

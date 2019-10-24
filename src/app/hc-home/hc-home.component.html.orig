@@ -24,9 +24,12 @@
         <a mat-list-item routerLink="admin" (click)=snav.toggle()>Admin</a>
         <a mat-list-item routerLink="profile" (click)=snav.toggle()>My Profile</a>
         <a mat-list-item routerLink="repairs" (click)=snav.toggle()>Repairs</a>
+<<<<<<< HEAD
+        <a mat-list-item routerLink="repairs-list" (click)="snav.toggle()">Repairs List</a>
+=======
         <a mat-list-item routerLink="hc-vote" (click)=snav.toggle()>View Votes for House-Committee</a>
         <a mat-list-item routerLink="candidate-vote" (click)=snav.toggle()>Vote For Candidates</a>
-        <a mat-list-item routerLink="repairs-list" (click)="snav.toggle()">Repairs List</a>
+>>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
         <a mat-list-item (click)="onLogOutClicked()">Log Out</a>
       </mat-nav-list>
     </mat-sidenav>
