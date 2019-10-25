@@ -45,14 +45,13 @@
             <div>
                 <ng-template #elseBlock>
                     Candidates selected: {{selections.selectedOptions.selected.length}}
-                    <div style="padding-top: 1 em; padding-bottom: 1;">
+                    <div style="padding-top: 1em; padding-bottom: 1em;">
                         <input [(ngModel)]="newCandidate" type="text" placeholder="Type your name and surname..." >
                     </div>
-                    <mat-divider></mat-divider>
-                    <div *ngIf="!userAdded;" style="float: left; padding-top: 1 em; padding-bottom: 1;">
+                    <div *ngIf="!userAdded;" style="float: left;">
                         <button mat-raised-button (click)="onAddCandidate()" style="background-color: indigo; color: white;">Add candidate</button>
                     </div>
-                    <div *ngIf="userAdded;" style="float: left; padding-left: 1em; padding-top: 1 em; padding-bottom: 1;">
+                    <div *ngIf="userAdded;" style="float: left; padding-bottom: 1;">
                         <button mat-raised-button (click)="onRemoveCandidate()" style="background-color: indigo; color: white;">Remove latest entry</button>
                     </div>
                     <div style="float: right;">
