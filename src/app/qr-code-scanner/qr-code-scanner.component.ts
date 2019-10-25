@@ -11,7 +11,7 @@ import {CalendarEvent} from '../models/calendarevent.model';
   styleUrls: ['./qr-code-scanner.component.scss']
 })
 export class QrCodeScannerComponent implements OnInit {
-  studentName: string;
+  studentName = '';
   studentNumber: string;
   studentImage: string;
   userID: string;
@@ -76,7 +76,7 @@ export class QrCodeScannerComponent implements OnInit {
     this.studentName = this.fps.getLoggedInUsernameWithPar(this.userID);
     console.log(this.studentName);
 
-    this.openForm(resultString);
+    this.openForm(resultString, this.studentName);
   }
 
   validate(resultString: string) {
@@ -88,7 +88,7 @@ export class QrCodeScannerComponent implements OnInit {
 
   }
 
-  openForm(resultString: string) {
+  openForm(resultString: string, studentName: string) {
     document.getElementById('successfulScan').style.display = 'block';
     this.studentNumber = resultString;
   }

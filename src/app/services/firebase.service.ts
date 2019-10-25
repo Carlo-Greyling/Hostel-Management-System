@@ -203,6 +203,12 @@ export class FirebaseService {
       });
   }
 
+  /*getAllRepairs() {
+    const repairsRef = this.db.collection('repairs');
+    const getDoc = repairsRef.get().toPromise();
+    return getDoc;
+  }*/
+
   newRepairTicket(ticketNumber, newTicket: Ticket) {
     /*this.studentNumber = studentNumber;
     this.studentName = studentName;
