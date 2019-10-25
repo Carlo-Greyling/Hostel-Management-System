@@ -70,9 +70,11 @@ export class QrCodeScannerComponent implements OnInit {
     this.qrResultString = resultString;
     // this.playAudio();
     this.userID = this.fps.getUidWithStudentNum(resultString);
+    console.log(this.userID);
     this.studentImage = this.fps.getProfilePicURLWithPar(this.userID);
     this.studentNumber = resultString;
     this.studentName = this.fps.getLoggedInUsernameWithPar(this.userID);
+    console.log(this.studentName);
 
     this.openForm(resultString);
   }

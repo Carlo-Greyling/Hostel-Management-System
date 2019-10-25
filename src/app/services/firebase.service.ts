@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+// @ts-ignore
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {User} from '../models/user.model';
 import {CalendarEvent} from '../models/calendarevent.model';
@@ -108,17 +109,19 @@ export class FirebaseService {
     return this.loggedInUsername;
   }
 
-  getLoggedInUsernameWithPar(uid) {
+  getLoggedInUsernameWithPar(uid): string {
+    let logName = '';
     const ref = this.db.collection('users').doc(uid);
-    const getDoc = this.userRef.get().toPromise()
+    const getDoc = ref.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
           console.log('GetProfileData-fbs: Profile not found!');
         } else {
-          this.loggedInUsername = doc.data().displayName;
+          logName = doc.data().displayName;
+          console.log(logName);
         }
       });
-    return this.loggedInUsername;
+    return logName;
   }
 
   getStudentEmail() {
@@ -201,12 +204,23 @@ export class FirebaseService {
   }
 
   newRepairTicket(ticketNumber, newTicket: Ticket) {
+    /*this.studentNumber = studentNumber;
+    this.studentName = studentName;
+    this.roomNumber = roomNumber;
+    this.description = description;
+    this.hostelID = hostelID;
+    this.repairsGeneratedEmail = repairsGeneratedEmail;*/
     const ref = this.db.collection('repairs').doc(ticketNumber);
     const getDoc = ref.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
           const data = {
-            newTicket
+            studentNumber: newTicket.studentNumber,
+            studentName: newTicket.studentName,
+            roomNumber: newTicket.roomNumber,
+            description: newTicket.description,
+            hostelId: newTicket.hostelID,
+            repairsGeneratedEmail: newTicket.repairsGeneratedEmail
           };
 
           ref.set(data);

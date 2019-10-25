@@ -43,14 +43,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { RepairsComponent } from './repairs/repairs.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AddEventComponent } from './add-event/add-event.component';
-<<<<<<< HEAD
-import { RepairsListComponent } from './repairs-list/repairs-list.component';
-=======
 import {MatSliderModule} from "@angular/material/slider";
 import { HcVoteComponent } from './hc-vote/hc-vote.component';
 import {MatSortModule} from '@angular/material/sort';
-import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component'; 
->>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component';
+import { RepairsListComponent } from './repairs-list/repairs-list.component';
+<<<<<<< HEAD
+import { ParticipationComponent } from './participation/participation.component';
+=======
+import {AdminComponent} from "./admin/admin.component";
+>>>>>>> 9527f5247034f57f6f57264c7c84f8d8d187b944
 
 @NgModule({
   declarations: [
@@ -66,12 +68,14 @@ import { CandidateVoteComponent } from './candidate-vote/candidate-vote.componen
     RepairsComponent,
     EventDetailsComponent,
     AddEventComponent,
-<<<<<<< HEAD
-    RepairsListComponent,
-=======
     HcVoteComponent,
     CandidateVoteComponent,
->>>>>>> 3375bf6875071fc5f27675342bf7f11cf228041c
+    RepairsListComponent,
+<<<<<<< HEAD
+    ParticipationComponent,
+=======
+    AdminComponent
+>>>>>>> 9527f5247034f57f6f57264c7c84f8d8d187b944
   ],
   imports: [
     BrowserModule,
