@@ -30,6 +30,11 @@ export class HcHomeComponent implements OnDestroy, OnInit {
     this.mobileQuery.addListener(this.mobileQueryListener);
     this.fbs.getUserType(localStorage.getItem('uid'));
     this.loggedInUsername = localStorage.getItem('username');
+    this.loggedInUsername = localStorage.getItem('username').toLowerCase();
+    this.loggedInUsername = this.loggedInUsername.charAt(0).toUpperCase() + this.loggedInUsername.substring(1, this.loggedInUsername.indexOf(' '))
+      + ' ' + this.loggedInUsername.charAt(this.loggedInUsername.indexOf(' ') + 1).toUpperCase()
+      + this.loggedInUsername.substring(this.loggedInUsername.indexOf(' ') + 2, this.loggedInUsername.length);
+
     this.studentEmail = localStorage.getItem('email');
     this.profilePictureUrl = localStorage.getItem('picurl');
   }
@@ -43,7 +48,7 @@ export class HcHomeComponent implements OnDestroy, OnInit {
     /*this.loggedInUsername = this.fbs.getLoggedInUsername();
     this.studentEmail = this.fbs.getStudentEmail();
     this.profilePictureUrl = this.fbs.getProfilePicURL();*/
-    this.loggedInUsername = localStorage.getItem('username');
+    // this.loggedInUsername = localStorage.getItem('username');
     this.studentEmail = localStorage.getItem('email');
     this.profilePictureUrl = localStorage.getItem('picurl');
   }

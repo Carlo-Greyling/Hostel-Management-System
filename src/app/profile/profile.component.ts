@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   studentNumber = localStorage.getItem('email').substring(0, 8);
-  studentName = localStorage.getItem('username');
+  studentName;
   studentEmail = localStorage.getItem('email');
 
   uploadStudentCard(event: any) {
@@ -24,6 +24,11 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.studentName = localStorage.getItem('username');
+    this.studentName = localStorage.getItem('username').toLowerCase();
+    this.studentName = this.studentName.charAt(0).toUpperCase() + this.studentName.substring(1, this.studentName.indexOf(' '))
+      + ' ' + this.studentName.charAt(this.studentName.indexOf(' ') + 1).toUpperCase()
+      + this.studentName.substring(this.studentName.indexOf(' ') + 2, this.studentName.length);
   }
 
 }

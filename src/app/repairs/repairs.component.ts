@@ -26,7 +26,7 @@ export class RepairsComponent implements OnInit {
   public repairsGeneratedEmail: string;
   studentGeneratedEmail: string;
 
-  emailHeader;
+  emailHeader = '';
 
   public generateEmails() {
     this.generateTicket();
@@ -63,7 +63,7 @@ export class RepairsComponent implements OnInit {
       'Room Number: ' + this.roomNumber +
 
       'Student Number: ' + this.studentNumber +
-      'Student Name: ' + this.studentNumber +
+      'Student Name: ' + this.studentName +
       'Student Email: ' + this.studentEmail +
 
       'Description: ' + this.description;
@@ -80,6 +80,7 @@ export class RepairsComponent implements OnInit {
   }
 
   public setNewTicket() {
+    // tslint:disable-next-line:max-line-length
     const newTicket = new Ticket(this.studentNumber, this.studentName, this.roomNumber, this.description, this.hostelID, this.repairsGeneratedEmail);
     this.fps.newRepairTicket(this.ticketNumber, newTicket);
   }
@@ -103,12 +104,11 @@ export class RepairsComponent implements OnInit {
 
   ngOnInit() {
     this.hostelID = 'Hombre';
-    this.studentNumber = localStorage.getItem('email').substring(0, 7);
+    this.studentNumber = localStorage.getItem('email').substring(0, 8);
     this.studentName = localStorage.getItem('username');
     this.studentName = localStorage.getItem('username').toLowerCase();
     this.studentName = this.studentName.charAt(0).toUpperCase() + this.studentName.substring(1, this.studentName.indexOf(' '))
       + ' ' + this.studentName.charAt(this.studentName.indexOf(' ') + 1).toUpperCase()
       + this.studentName.substring(this.studentName.indexOf(' ') + 2, this.studentName.length);
   }
-
 }

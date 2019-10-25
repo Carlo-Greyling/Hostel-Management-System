@@ -48,6 +48,7 @@ import { HcVoteComponent } from './hc-vote/hc-vote.component';
 import {MatSortModule} from '@angular/material/sort';
 import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component'; 
 import { RepairsListComponent } from './repairs-list/repairs-list.component';
+import { ParticipationComponent } from './participation/participation.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { RepairsListComponent } from './repairs-list/repairs-list.component';
     HcVoteComponent,
     CandidateVoteComponent,
     RepairsListComponent,
+    ParticipationComponent,
   ],
   imports: [
     BrowserModule,
