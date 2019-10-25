@@ -1,14 +1,12 @@
-<div class="repair-tickets" *ngFor="let i of repairsTickets">
+<div class="repair-tickets" *ngFor="let i of repairsTickets; let i = index">
     <mat-card style="width: 22%; position: relative; float: left; padding: 3px; margin: 1%">
-      <mat-card style="border-color: black; border-bottom: 1px solid">
+      <mat-card style="border-color: black; border-bottom: 1px solid; overflow: hidden">
         <h5>
-          {{ 'Test' }}
+          {{ i.ticketNumber }}
         </h5>
       </mat-card>
       <mat-card>
-        <p>
-          {{ 'Test' }}
-        </p>
+          {{ i.ticketEmail }}
       </mat-card>
     </mat-card>
 </div>
