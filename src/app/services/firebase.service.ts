@@ -16,6 +16,7 @@ export class FirebaseService {
   userType;
   hostelId = '';
   events: CalendarEvent[] = [];
+  private logName: string;
 
   constructor(private db: AngularFirestore) {
     this.userRef = this.db.collection('users').doc(localStorage.getItem('uid'));
@@ -110,18 +111,17 @@ export class FirebaseService {
   }
 
   getLoggedInUsernameWithPar(uid): string {
-    let logName = '';
+    // let logName = '';
     const ref = this.db.collection('users').doc(uid);
     const getDoc = ref.get().toPromise()
       .then(doc => {
         if (!doc.exists) {
           console.log('GetProfileData-fbs: Profile not found!');
         } else {
-          logName = doc.data().displayName;
-          console.log(logName);
+          this.logName = doc.data().displayName;
         }
       });
-    return logName;
+    return this.logName;
   }
 
   getStudentEmail() {
