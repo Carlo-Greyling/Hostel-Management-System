@@ -48,14 +48,15 @@
                     <div style="padding-top: 1 em; padding-bottom: 1;">
                         <input [(ngModel)]="newCandidate" type="text" placeholder="Type your name and surname..." >
                     </div>
-                    <div style="float: left; padding-top: 1 em; padding-bottom: 1;">
+                    <mat-divider></mat-divider>
+                    <div *ngIf="!userAdded;" style="float: left; padding-top: 1 em; padding-bottom: 1;">
                         <button mat-raised-button (click)="onAddCandidate()" style="background-color: indigo; color: white;">Add candidate</button>
                     </div>
-                    <div style="float: left; padding-left: 1em; padding-top: 1 em; padding-bottom: 1;">
+                    <div *ngIf="userAdded;" style="float: left; padding-left: 1em; padding-top: 1 em; padding-bottom: 1;">
                         <button mat-raised-button (click)="onRemoveCandidate()" style="background-color: indigo; color: white;">Remove latest entry</button>
                     </div>
                     <div style="float: right;">
-                        <button mat-raised-button (click)="onSubmitVote() style="background-color: indigo; color: white;">Submit</button>
+                        <button mat-raised-button (click)="onSubmitVote()" style="background-color: indigo; color: white;">Submit Vote</button>
                     </div>
                 </ng-template>
             </div>
