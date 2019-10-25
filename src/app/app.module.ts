@@ -46,8 +46,9 @@ import { AddEventComponent } from './add-event/add-event.component';
 import {MatSliderModule} from "@angular/material/slider";
 import { HcVoteComponent } from './hc-vote/hc-vote.component';
 import {MatSortModule} from '@angular/material/sort';
-import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component'; 
+import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component';
 import { RepairsListComponent } from './repairs-list/repairs-list.component';
+import {AdminComponent} from "./admin/admin.component";
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { RepairsListComponent } from './repairs-list/repairs-list.component';
     HcVoteComponent,
     CandidateVoteComponent,
     RepairsListComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
