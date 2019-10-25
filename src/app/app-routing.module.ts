@@ -13,6 +13,7 @@ import { RepairsComponent } from './repairs/repairs.component';
 import { HcVoteComponent } from './hc-vote/hc-vote.component';
 import { CandidateVoteComponent } from './candidate-vote/candidate-vote.component';
 import {RepairsListComponent} from './repairs-list/repairs-list.component';
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'hc-home/calender' },
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'calender', component: CalenderComponent, canActivate: [CanActivateGuard]},
       { path: 'attendance', component: AttendanceComponent, canActivate: [CanActivateGuard]},
       { path: 'qr-code', component: QRCodeGeneratorComponent, canActivate: [CanActivateGuard]},
+      { path: 'admin', component: AdminComponent, canActivate: [CanActivateGuard]},
       { path: 'qr-scanner', component: QrCodeScannerComponent, canActivate: [CanActivateGuard]},
       { path: 'profile', component: ProfileComponent, canActivate: [CanActivateGuard]},
       { path: 'repairs', component: RepairsComponent,  canActivate: [CanActivateGuard]},

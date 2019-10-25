@@ -3,7 +3,7 @@ import { BarcodeFormat } from '@zxing/library';
 import {BehaviorSubject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {FirebaseService} from '../services/firebase.service';
-import {CalendarEvent} from "../models/calendarevent.model";
+import {CalendarEvent} from '../models/calendarevent.model';
 
 @Component({
   selector: 'app-qr-code-scanner',
@@ -70,9 +70,11 @@ export class QrCodeScannerComponent implements OnInit {
     this.qrResultString = resultString;
     // this.playAudio();
     this.userID = this.fps.getUidWithStudentNum(resultString);
+    console.log(this.userID);
     this.studentImage = this.fps.getProfilePicURLWithPar(this.userID);
     this.studentNumber = resultString;
     this.studentName = this.fps.getLoggedInUsernameWithPar(this.userID);
+    console.log(this.studentName);
 
     this.openForm(resultString);
   }
