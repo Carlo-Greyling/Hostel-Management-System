@@ -109,7 +109,7 @@ export class FirebaseService {
     return this.loggedInUsername;
   }
 
-  getLoggedInUsernameWithPar(uid) {
+  getLoggedInUsernameWithPar(uid): string {
     let logName = '';
     const ref = this.db.collection('users').doc(uid);
     const getDoc = ref.get().toPromise()
@@ -119,9 +119,9 @@ export class FirebaseService {
         } else {
           logName = doc.data().displayName;
           console.log(logName);
-          return logName;
         }
       });
+    return logName;
   }
 
   getStudentEmail() {
