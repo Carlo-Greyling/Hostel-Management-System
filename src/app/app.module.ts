@@ -68,7 +68,7 @@ import { ParticipationComponent } from './participation/participation.component'
     HcVoteComponent,
     CandidateVoteComponent,
     RepairsListComponent,
-    AdminComponent
+    AdminComponent,
     ParticipationComponent,
   ],
   imports: [
