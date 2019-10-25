@@ -22,6 +22,7 @@ export interface HCCandidates {
 export class CandidateVoteComponent implements OnInit {
 
   newCandidate : string;
+  userAdded = false;
 
   underPrims: Under_Prims[] = [
     {name: 'Johannes van Rensburg'},
@@ -35,16 +36,6 @@ export class CandidateVoteComponent implements OnInit {
     {name: 'Eye of Misery'}
   ];
 
-  /*listOfCandidates: HCCandidates[] = [
-    {name: 'Piet Pompies'},
-    {name: 'Keanu Reeves'},
-    {name: 'Jane Bolton'},
-    {name: 'Mike Izzumi'},
-    {name: 'Lil Uzi Vert'},
-    {name: 'Kentucky Pete'},
-    {name: 'Peter Griffin'}
-  ]*/
-
   listOfCandidates: EligableCandidates[] = [
     {name: 'Piet Pompies'},
     {name: 'Keanu Reeves'},
@@ -56,17 +47,18 @@ export class CandidateVoteComponent implements OnInit {
   ];
 
   onAddCandidate() {
+      this.userAdded = true;
       this.listOfCandidates.push(new EligableCandidates(this.newCandidate));
   }
 
   onRemoveCandidate() {
     var index = this.listOfCandidates.length-1;
     this.listOfCandidates.splice(index, 1);
-   
+    this.userAdded = false;
   }
 
   onSubmitVote() {
-    
+
   }
 
   constructor() { }
