@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {CalendarEvent} from '../models/calendarevent.model';
 import {eventDragMutationMassager} from '@fullcalendar/core';
-import {AddEventComponent} from "../add-event/add-event.component";
+import {AddEventComponent} from '../add-event/add-event.component';
 
 @Component({
   selector: 'app-event-details',
@@ -18,7 +18,10 @@ export class EventDetailsComponent implements OnInit {
   userType = '';
   userIsHc = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, private dialog: MatDialog) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private dialog: MatDialog) {
+    this.userType = localStorage.getItem('userType');
+    console.log(this.userType);
+  }
 
   ngOnInit() {
     this.eventdate = this.data.date;
@@ -36,7 +39,8 @@ export class EventDetailsComponent implements OnInit {
       this.title = 'There is no event set for this day.';
       this.description = 'There is no event set for this day.';
     }
-    this.userType = localStorage.getItem('userType');
+    /*this.userType = localStorage.getItem('userType');
+    console.log(this.userType);*/
   }
 
   onCloseClicked() {
