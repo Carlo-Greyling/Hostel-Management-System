@@ -4,6 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {FirebaseService} from '../services/firebase.service';
 import {CalendarEvent} from '../models/calendarevent.model';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-qr-code-scanner',
@@ -13,7 +14,7 @@ import {CalendarEvent} from '../models/calendarevent.model';
 export class QrCodeScannerComponent implements OnInit {
   studentName: string;
   studentNumber: string;
-  studentImage: string;
+  studentImage: SafeResourceUrl;
   userID: string;
 
   validAttendance = [];
@@ -38,7 +39,7 @@ export class QrCodeScannerComponent implements OnInit {
   localArray: CalendarEvent[] = [];
   private eventId: any;
 
-  constructor(private readonly _dialog: MatDialog, private fps: FirebaseService) {
+  constructor(private readonly _dialog: MatDialog, private fps: FirebaseService, private sanitizer: DomSanitizer) {
     const array = this.fps.getEvents();
     this.localArray = array; // TODO: this line assigns firebase array to local array, if code below fixed, remove this line!!!!!
 
@@ -69,9 +70,12 @@ export class QrCodeScannerComponent implements OnInit {
   onCodeResult(resultString: string) {
     this.qrResultString = resultString;
     // this.playAudio();
+    // this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+    //                  + toReturnImage.base64string);
     this.userID = this.fps.getUidWithStudentNum(resultString);
     console.log(this.userID);
-    this.studentImage = this.fps.getProfilePicURLWithPar(this.userID);
+    // this.studentImage = this.fps.getProfilePicURLWithPar(this.userID);
+    this.studentImage = this.sanitizer.bypassSecurityTrustResourceUrl(this.fps.getProfilePicURLWithPar(this.userID));
     this.studentNumber = resultString;
     this.studentName = this.fps.getLoggedInUsernameWithPar(this.userID);
     console.log(this.studentName);
